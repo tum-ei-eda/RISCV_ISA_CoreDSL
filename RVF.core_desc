@@ -7,7 +7,7 @@ InstructionSet RV32F extends Zicsr {
         unsigned<32> FFLAG_MASK = 0x1f;
 
         register unsigned<FLEN> F[32];
-        unsigned<32>& FCSR = CSR[3];
+        unsigned<32>& FCSR = CSR[RV_CSR_FCSR];
     }
 
     functions {

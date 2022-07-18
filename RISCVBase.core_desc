@@ -1,4 +1,6 @@
-InstructionSet RISCVBase {
+import "RISCVEncoding.core_desc"
+
+InstructionSet RISCVBase extends RISCVEncoding {
     architectural_state {
         unsigned int XLEN;
         unsigned int INSTR_ALIGNMENT = 4;

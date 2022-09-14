@@ -350,7 +350,7 @@ InstructionSet RV32D extends RV32F {
             encoding: 7'b1100001 :: 5'b00000 :: rs1[4:0] :: rm[2:0] :: rd[4:0] :: 7'b1010011;
             assembly:"{name(rm)}, {name(rd)}, f {rs1}";
             behavior: {
-                signed<64> res = 0;
+                signed<32> res = 0;
                 if (FLEN == 64)
                     res = fcvt_64_32(F[rs1], 0, rm);
                 else { // NaN boxing
@@ -368,14 +368,14 @@ InstructionSet RV32D extends RV32F {
             assembly:"{name(rm)}, {name(rd)}, f {rs1}";
             behavior: {
                 //FIXME: should be zext accodring to spec but needs to be sext according to tests
-                unsigned<64> res = 0;
+                unsigned<32> res = 0;
                 if (FLEN == 64)
-                    res = fcvt_64_32(F[rs1], 0, rm);
+                    res = fcvt_64_32(F[rs1], 1, rm);
                 else { // NaN boxing
                     unsigned<64> frs1 = unbox_d(F[rs1]);
-                    res = fcvt_64_32(frs1, 0, rm);
+                    res = fcvt_64_32(frs1, 1, rm);
                 }
-                if ((rd % RFS) != 0) X[rd % RFS] = res;
+                if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<64>)(signed)res;
                 unsigned<32> flags = fget_flags();
                 FCSR = (FCSR & ~FFLAG_MASK) | (flags & FFLAG_MASK);
             }

@@ -393,7 +393,7 @@ InstructionSet RV64IC extends RV32IC {
             assembly: "{name(8+rd)}, {name(8+rd)}, {name(8+rs2)}";
             behavior: {
                 unsigned<32> res = (unsigned<32>)X[rd + 8] - (unsigned<32>)X[rs2 + 8];
-                X[rd + 8] = (signed<XLEN>)res;
+                X[rd + 8] = (unsigned<XLEN>)(signed)res;
             }
         }
 
@@ -402,7 +402,7 @@ InstructionSet RV64IC extends RV32IC {
             assembly: "{name(8+rd)}, {name(8+rd)}, {name(8+rs2)}";
             behavior: {
 	            unsigned<32> res = (unsigned<32>)X[rd + 8] + (unsigned<32>)X[rs2 + 8];
-	            X[rd + 8] = (signed<XLEN>)res;
+	            X[rd + 8] = (unsigned<XLEN>)(signed)res;
             }
         }
 

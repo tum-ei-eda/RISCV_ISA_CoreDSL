@@ -70,7 +70,7 @@ InstructionSet RV64I extends RV32I {
             behavior: {
                 if ((rd % RFS) != 0) {
                     unsigned<32> sh_val = ((unsigned<32>)X[rs1 % RFS]) <<  shamt;
-                    X[rd % RFS] = (signed<64>)sh_val;
+                    X[rd % RFS] = (unsigned<64>)(signed)sh_val;
                 }
             }
         }
@@ -81,7 +81,7 @@ InstructionSet RV64I extends RV32I {
             behavior: {
                 if ((rd % RFS) != 0) {
                     unsigned<32> sh_val = ((unsigned<32>)X[rs1 % RFS]) >> shamt;
-                    X[rd % RFS] = (signed<64>)sh_val;
+                    X[rd % RFS] = (unsigned<64>)(signed)sh_val;
                 }
             }
         }
@@ -92,7 +92,7 @@ InstructionSet RV64I extends RV32I {
             behavior: {
                 if ((rd % RFS) != 0) {
                     signed<32> sh_val = ((signed<32>)X[rs1 % RFS]) >> shamt;
-                    X[rd % RFS] = (signed<64>)sh_val;
+                    X[rd % RFS] = (unsigned<64>)sh_val;
                 }
             }
         }
@@ -124,7 +124,7 @@ InstructionSet RV64I extends RV32I {
                 if ((rd % RFS) != 0) {
                     unsigned<32> count = (unsigned)X[rs2 % RFS] & 0x1f;
                     unsigned<32> sh_val = ((unsigned<32>)X[rs1 % RFS]) << count;
-                    X[rd % RFS] = (unsigned<64>)sh_val;
+                    X[rd % RFS] = (unsigned<64>)(signed)sh_val;
                 }
             }
         }
@@ -136,7 +136,7 @@ InstructionSet RV64I extends RV32I {
                 if ((rd % RFS) != 0) {
                     unsigned<32> count = (unsigned)X[rs2 % RFS] & 0x1f;
                     unsigned<32> sh_val = ((unsigned<32>)X[rs1 % RFS]) >> count;
-                    X[rd % RFS] = (unsigned<64>)sh_val;
+                    X[rd % RFS] = (unsigned<64>)(signed)sh_val;
                 }
             }
         }

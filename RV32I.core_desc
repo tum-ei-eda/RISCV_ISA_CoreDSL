@@ -15,7 +15,7 @@ InstructionSet RV32I extends RISCVBase {
         AUIPC {
             encoding: imm[31:12] :: rd[4:0] :: 7'b0010111;
             assembly: "{name(rd)}, {imm:#08x}";
-            behavior: if ((rd % RFS) != 0) X[rd % RFS] = PC+(signed)imm;
+            behavior: if ((rd % RFS) != 0) X[rd % RFS] = PC + (signed)imm;
         }
 
         JAL [[no_cont]] {
@@ -461,7 +461,7 @@ InstructionSet RVDebug extends RISCVBase {
                     raise(0, 2);
                 else {
                     PC=DPC;
-                    PRIV &= 0x3;                    
+                    PRIV &= 0x3;
                 }
             }
         }

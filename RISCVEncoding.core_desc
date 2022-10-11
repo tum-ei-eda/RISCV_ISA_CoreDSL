@@ -412,5 +412,38 @@ InstructionSet RISCVEncoding {
         const int RV_CAUSE_LOAD_GUEST_PAGE_FAULT = 0x15;
         const int RV_CAUSE_VIRTUAL_INSTRUCTION = 0x16;
         const int RV_CAUSE_STORE_GUEST_PAGE_FAULT = 0x17;
+
+        const int RV_MSTATUS_UIE = 0x00000001;
+        const int RV_MSTATUS_SIE = 0x00000002;
+        const int RV_MSTATUS_HIE = 0x00000004;
+        const int RV_MSTATUS_MIE = 0x00000008;
+        const int RV_MSTATUS_UPIE = 0x00000010;
+        const int RV_MSTATUS_SPIE = 0x00000020;
+        const int RV_MSTATUS_UBE = 0x00000040;
+        const int RV_MSTATUS_MPIE = 0x00000080;
+        const int RV_MSTATUS_SPP = 0x00000100;
+        const int RV_MSTATUS_VS = 0x00000600;
+        const int RV_MSTATUS_MPP = 0x00001800;
+        const int RV_MSTATUS_FS = 0x00006000;
+        const int RV_MSTATUS_XS = 0x00018000;
+        const int RV_MSTATUS_MPRV = 0x00020000;
+        const int RV_MSTATUS_SUM = 0x00040000;
+        const int RV_MSTATUS_MXR = 0x00080000;
+        const int RV_MSTATUS_TVM = 0x00100000;
+        const int RV_MSTATUS_TW = 0x00200000;
+        const int RV_MSTATUS_TSR = 0x00400000;
+        const int RV_MSTATUS32_SD = 0x80000000;
+        const int RV_MSTATUS_UXL = 0x0000000300000000;
+        const int RV_MSTATUS_SXL = 0x0000000C00000000;
+        const int RV_MSTATUS_SBE = 0x0000001000000000;
+        const int RV_MSTATUS_MBE = 0x0000002000000000;
+        const int RV_MSTATUS_GVA = 0x0000004000000000;
+        const int RV_MSTATUS_MPV = 0x0000008000000000;
+        const int RV_MSTATUS64_SD = 0x8000000000000000;
+
+        const int RV_PRV_U = 0;
+        const int RV_PRV_S = 1;
+        const int RV_PRV_H = 2;
+        const int RV_PRV_M = 3;
     }
 }

@@ -119,7 +119,7 @@ InstructionSet RV64M extends RV32M {
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
             behavior: {
                 if ((rd % RFS) != 0) {
-                    X[rd % RFS] = (signed<MUL_LEN>)(signed<32>)X[rs1 % RFS] * (signed<MUL_LEN>)(signed<32>)X[rs2 % RFS];
+                    X[rd % RFS] = (unsigned<XLEN>)(signed<32>)((signed<32>)X[rs1 % RFS] * (signed<32>)X[rs2 % RFS]);
                 }
             }
         }
@@ -147,7 +147,7 @@ InstructionSet RV64M extends RV32M {
             behavior: {
                 if ((rd % RFS) != 0) {
                     if ((unsigned<32>)X[rs2 % RFS] != 0)
-                        X[rd % RFS] = (signed<XLEN>)((unsigned<32>)X[rs1 % RFS] / (unsigned<32>)X[rs2 % RFS]);
+                        X[rd % RFS] = (unsigned<XLEN>)(signed)((unsigned<32>)X[rs1 % RFS] / (unsigned<32>)X[rs2 % RFS]);
                     else
                         X[rd % RFS] = -1;
                 }
@@ -177,9 +177,9 @@ InstructionSet RV64M extends RV32M {
             behavior: {
                 if ((rd % RFS) != 0) {
                     if ((unsigned<32>)X[rs2 % RFS] != 0)
-                        X[rd % RFS] = (signed<XLEN>)((unsigned<32>)X[rs1 % RFS] % (unsigned<32>)X[rs2 % RFS]);
+                        X[rd % RFS] = (unsigned<XLEN>)(signed)((unsigned<32>)X[rs1 % RFS] % (unsigned<32>)X[rs2 % RFS]);
                     else
-                        X[rd % RFS] = (signed<XLEN>)((signed<32>)X[rs1 % RFS]);
+                        X[rd % RFS] = (unsigned<XLEN>)((signed<32>)X[rs1 % RFS]);
                 }
             }
         }

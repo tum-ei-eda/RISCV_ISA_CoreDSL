@@ -320,7 +320,7 @@ InstructionSet RV32F extends Zicsr {
                     unsigned<32> frs1 = unbox_s(F[rs1]);
                     res = fcvt_s(frs1, 1, rm);
                 }
-                if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<64>)(signed)res;
+                if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<XLEN>)(signed)res;
                 unsigned<32> flags = fget_flags();
                 FCSR = (FCSR & ~FFLAG_MASK) | (flags & FFLAG_MASK);
             }
@@ -423,7 +423,7 @@ InstructionSet RV32F extends Zicsr {
             encoding: 7'b1110000 :: 5'b00000 :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010011;
             assembly:"{name(rd)}, f {rs1}";
             behavior: {
-                if ((rd % RFS) != 0) X[rd % RFS] = (signed)(unsigned<32>)F[rs1];
+                if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<XLEN>)(signed<32>)F[rs1];
             }
         }
 

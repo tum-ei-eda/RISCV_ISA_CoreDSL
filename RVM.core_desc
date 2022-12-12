@@ -5,7 +5,7 @@ InstructionSet RV32M extends RISCVBase {
         unsigned<32> MUL_LEN = 2 * XLEN;
     }
 
-    instructions {
+    instructions [[ enable(CSR[RV_CSR_MISA] & (1 << 12)) ]] {
         MUL {
             encoding: 7'b0000001 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b0110011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
@@ -113,7 +113,7 @@ InstructionSet RV32M extends RISCVBase {
 }
 
 InstructionSet RV64M extends RV32M {
-    instructions {
+    instructions [[ enable(CSR[RV_CSR_MISA] & (1 << 12)) ]] {
         MULW {
             encoding: 7'b0000001 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b0111011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";

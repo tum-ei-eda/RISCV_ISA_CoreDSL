@@ -5,7 +5,7 @@ InstructionSet RV32IC extends RV32I {
         INSTR_ALIGNMENT = 2;
     }
 
-    instructions{
+    instructions [[ enable(CSR[RV_CSR_MISA] & (1 << 2)) ]] {
         CADDI4SPN { //(RES, imm=0)
             encoding: 3'b000 :: imm[5:4] :: imm[9:6] :: imm[2:2] :: imm[3:3] :: rd[2:0] :: 2'b00;
             assembly: "{name(rd)}, {imm:#05x}";
@@ -242,7 +242,7 @@ InstructionSet RV32IC extends RV32I {
 }
 
 InstructionSet RV32FC extends RV32F {
-    instructions {
+    instructions [[ enable(CSR[RV_CSR_MISA] & ((1 << 2) | (1 << 5))) ]] {
         CFLW {
             encoding: 3'b011 :: uimm[5:3] :: rs1[2:0] :: uimm[2:2] :: uimm[6:6] :: rd[2:0] :: 2'b00;
             assembly:"f(8+{rd}), {uimm}({name(8+rs1)})";
@@ -292,7 +292,7 @@ InstructionSet RV32FC extends RV32F {
 }
 
 InstructionSet RV32DC extends RV32D {
-    instructions {
+    instructions [[ enable(CSR[RV_CSR_MISA] & ((1 << 2) | (1 << 3) | (1 << 5))) ]] {
         CFLD { //(RV32/64)
             encoding: 3'b001 :: uimm[5:3] :: rs1[2:0] :: uimm[7:6] :: rd[2:0] :: 2'b00;
             assembly:"f(8+{rd}), {uimm}({name(8+rs1)})";
@@ -342,7 +342,7 @@ InstructionSet RV32DC extends RV32D {
 }
 
 InstructionSet RV64IC extends RV32IC {
-    instructions{
+    instructions [[ enable(CSR[RV_CSR_MISA] & (1 << 2)) ]] {
         CSRLI {//(RV32/RV64)
             encoding: 3'b100:: nzuimm[5:5] :: 2'b00:: rs1[2:0] :: nzuimm[4:0] :: 2'b01;
             assembly: "{name(8+rs1)}, {nzuimm}";
@@ -436,7 +436,7 @@ InstructionSet RV64IC extends RV32IC {
 }
 
 InstructionSet RV128IC extends RV64IC {
-    instructions{
+    instructions [[ enable(CSR[RV_CSR_MISA] & (1 << 2)) ]] {
         CSRAI64 {//(RV128)
             encoding: 3'b100 :: 0b0 :: 2'b01:: rs1[2:0] :: 0b0000 :: 2'b01;
             assembly: "{name(8+rs1)}";

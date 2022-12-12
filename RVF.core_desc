@@ -27,7 +27,7 @@ InstructionSet RV32F extends Zicsr {
         extern unsigned<32> fget_flags();
     }
 
-    instructions {
+    instructions [[ enable(CSR[RV_CSR_MISA] & (1 << 5)) ]] {
         FLW {
             encoding: imm[11:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b0000111;
             assembly:"f {rd}, {imm}({name(rs1)})";
@@ -442,7 +442,7 @@ InstructionSet RV32F extends Zicsr {
 }
 
 InstructionSet RV64F extends RV32F {
-    instructions {
+    instructions [[ enable(CSR[RV_CSR_MISA] & (1 << 5)) ]] {
         FCVT_L_S { // fp to 64bit signed integer
             encoding: 7'b1100000 :: 5'b00010 :: rs1[4:0] :: rm[2:0] :: rd[4:0] :: 7'b1010011;
             assembly:"{name(rm)}, {name(rd)}, f {rs1}";

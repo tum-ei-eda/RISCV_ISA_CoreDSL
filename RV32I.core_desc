@@ -353,6 +353,12 @@ InstructionSet Zicsr extends RISCVBase {
         extern unsigned<XLEN> CSR[CSR_SIZE];
     }
 
+    functions {
+        bool extension_enabled(char extension) {
+            return (CSR[RV_CSR_MISA] >> (extension - 'A')) & 1;
+        }
+    }
+
     instructions {
         CSRRW {
             encoding: csr[11:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1110011;

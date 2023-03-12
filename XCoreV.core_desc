@@ -7,7 +7,8 @@ InstructionSet XCoreVMac extends RISCVBase {
             encoding: 7'b0100001 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b0110011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
             behavior: {
-              signed<65> result = (signed)X[rs1] * (signed)X[rs2] + (signed)X[rd];
+              // signed<65> result = (signed)X[rs1] * (signed)X[rs2] + (signed)X[rd];
+              signed<64> result = (signed)X[rs1] * (signed)X[rs2] + (signed)X[rd];
               if(rd != 0) X[rd] = result[31:0];
             }
         }
@@ -15,10 +16,11 @@ InstructionSet XCoreVMac extends RISCVBase {
             encoding: 7'b0100001 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b0110011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
             behavior: {
-              signed<65> result = (signed)X[rd] - (signed)X[rs1] * (signed)X[rs2] ;
+              // signed<65> result = (signed)X[rd] - (signed)X[rs1] * (signed)X[rs2] ;
+              signed<64> result = (signed)X[rd] - (signed)X[rs1] * (signed)X[rs2] ;
               if(rd != 0) X[rd] = result[31:0];
             }
-        } 
+        }
         // 16-Bit x 16-Bit Multiplication
         CV_MULUN {
             encoding: 2'b00 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b0101011;

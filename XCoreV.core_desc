@@ -1,7 +1,120 @@
 import "RISCVBase.core_desc"
 
 InstructionSet XCoreVMac extends RISCVBase {
-    instructions { 
+    instructions {
+        // ?
+        CV_SB_ri_inc {
+            encoding: imm12[11:5] :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: imm12[4:0] :: 7'b0101011;
+            assembly:"{name(rs2)}, {imm12}({name(rs1)}!)";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
+        CV_SH_ri_inc {
+            encoding: imm12[11:5] :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: imm12[4:0] :: 7'b0101011;
+            assembly:"{name(rs2)}, {imm12}({name(rs1)}!)";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
+        CV_SW_ri_inc {
+            encoding: imm12[11:5] :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: imm12[4:0] :: 7'b0101011;
+            assembly:"{name(rs2)}, {imm12}({name(rs1)}!)";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
+        CV_LW_ri_inc {
+            encoding: imm12[11:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b0001011;
+            assembly:"{name(rd)}, {imm12}({name(rs1)}!)";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
+        CV_LH_ri_inc {
+            encoding: imm12[11:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b0001011;
+            assembly:"{name(rd)}, {imm12}({name(rs1)}!)";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
+        CV_LHU_ri_inc {
+            encoding: imm12[11:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b0001011;
+            assembly:"{name(rd)}, {imm12}({name(rs1)}!)";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
+        CV_LB_ri_inc {
+            encoding: imm12[11:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b0001011;
+            assembly:"{name(rd)}, {imm12}({name(rs1)}!)";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
+        CV_LBU_ri_inc {
+            encoding: imm12[11:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b0001011;
+            assembly:"{name(rd)}, {imm12}({name(rs1)}!)";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
+        CV_SB_rr {
+            encoding: 7'b0000000 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rs3[4:0] :: 7'b0100011;
+            assembly:"{name(rs2)}, {name(rs3)}({name(rs1)})";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
+        CV_SH_rr {
+            encoding: 7'b0000000 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rs3[4:0] :: 7'b0100011;
+            assembly:"{name(rs2)}, {name(rs3)}({name(rs1)})";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
+        CV_SW_rr {
+            encoding: 7'b0000000 :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rs3[4:0] :: 7'b0100011;
+            assembly:"{name(rs2)}, {name(rs3)}({name(rs1)})";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
+        CV_LBU_rr {
+            encoding: 7'b0000000 :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0000011;
+            assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
+        CV_LB_rr {
+            encoding: 7'b0100000 :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0000011;
+            assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
+        CV_LHU_rr {
+            encoding: 7'b0101000 :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0000011;
+            assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
+        CV_LH_rr {
+            encoding: 7'b0001000 :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0000011;
+            assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
+        CV_LW_rr {
+            encoding: 7'b0010000 :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0000011;
+            assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
+            behavior: {
+                signed<32> result = 0;
+            }
+        }
         // 32-Bit x 32-Bit Multiplication Operations (Signed)
         CV_MAC {
             encoding: 7'b0100001 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b0110011;
@@ -29,7 +142,7 @@ InstructionSet XCoreVMac extends RISCVBase {
               unsigned<32> result = ((unsigned)X[rs1][15:0] * (unsigned)X[rs2][15:0]) >> Is3;
               if(rd != 0) X[rd] = result[31:0];
             }
-        } 
+        }
         CV_MULHHUN {
             encoding: 2'b01 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";

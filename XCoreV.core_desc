@@ -233,15 +233,15 @@ InstructionSet XCoreVMac extends RISCVBase {
             }
         }
         CV_MACSN {
-            encoding: 2'b00 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b10 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
               signed<32> result = ((signed)X[rs1][15:0] * (signed)X[rs2][15:0] + (signed)X[rd]) >> Is3;
               if(rd != 0) X[rd] = result[31:0];
             }
-        } 
+        }
         CV_MACHHSN {
-            encoding: 2'b01 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b0101011;
+            encoding: 2'b11 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1011011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
               signed<32> result = ((signed)X[rs1][31:16] * (signed)X[rs2][31:16] + (signed)X[rd]) >> Is3;

@@ -158,7 +158,7 @@ InstructionSet XCoreVMac extends RISCVBase {
               signed<32> result = ((signed)X[rs1][15:0] * (signed)X[rs2][15:0]) >> Is3;
               if(rd != 0) X[rd] = result[31:0];
             }
-        } 
+        }
         CV_MULHHSN {
             encoding: 2'b01 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
@@ -175,10 +175,10 @@ InstructionSet XCoreVMac extends RISCVBase {
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
 				unsigned<32> sum = product + powerOf2;
 				unsigned<32> rounded = sum >> Is3;
-				
+
 				X[rd] = rounded[31:0];
             }
-        } 
+        }
         CV_MULHHURN {
             encoding: 2'b11:: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b101 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
@@ -187,10 +187,10 @@ InstructionSet XCoreVMac extends RISCVBase {
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
 				unsigned<32> sum = product + powerOf2;
 				unsigned<32> rounded = sum >> Is3;
-				
+
 				X[rd] = rounded[31:0];
             }
-        }  
+        }
         CV_MULSRN {
             encoding: 2'b10:: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b100 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
@@ -199,10 +199,10 @@ InstructionSet XCoreVMac extends RISCVBase {
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
 				signed<32> sum = product + powerOf2;
 				signed<32> rounded = sum >> Is3;
-				
+
 				X[rd] = rounded[31:0];
             }
-        } 
+        }
         CV_MULHHSRN {
             encoding: 2'b11:: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b100 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
@@ -211,7 +211,7 @@ InstructionSet XCoreVMac extends RISCVBase {
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
 				signed<32> sum = product + powerOf2;
 				signed<32> rounded = sum >> Is3;
-				
+
 				X[rd] = rounded[31:0];
             }
         }
@@ -223,7 +223,7 @@ InstructionSet XCoreVMac extends RISCVBase {
               unsigned<32> result = ((unsigned)X[rs1][15:0] * (unsigned)X[rs2][15:0] + (unsigned)X[rd]) >> Is3;
               if(rd != 0) X[rd] = result[31:0];
             }
-        } 
+        }
         CV_MACHHUN {
             encoding: 2'b01 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
@@ -256,10 +256,10 @@ InstructionSet XCoreVMac extends RISCVBase {
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
 				unsigned<32> sum = product + powerOf2;
 				unsigned<32> rounded = sum >> Is3;
-				
+
 				X[rd] = rounded[31:0];
             }
-        } 
+        }
         CV_MACHHURN {
             encoding: 2'b11 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b110 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
@@ -268,10 +268,10 @@ InstructionSet XCoreVMac extends RISCVBase {
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
 				unsigned<32> sum = product + (unsigned)X[rd] + powerOf2;
 				unsigned<32> rounded = sum >> Is3;
-				
+
 				X[rd] = rounded[31:0];
             }
-        }  
+        }
         CV_MACSRN {
             encoding: 2'b10 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b111 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
@@ -280,10 +280,10 @@ InstructionSet XCoreVMac extends RISCVBase {
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
 				signed<32> sum = product + (signed)X[rd] + powerOf2;
 				signed<32> rounded = sum >> Is3;
-				
+
 				X[rd] = rounded[31:0];
             }
-        } 
+        }
         CV_MACHHSRN {
             encoding: 2'b11 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b111 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
@@ -292,14 +292,14 @@ InstructionSet XCoreVMac extends RISCVBase {
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
 				signed<32> sum = product + (signed)X[rd] + powerOf2;
 				signed<32> rounded = sum >> Is3;
-				
+
 				X[rd] = rounded[31:0];
             }
         }
     }
 }
 InstructionSet XCoreVAlu extends RISCVBase {
-    instructions { 
+    instructions {
         CV_MAXU {
             encoding: 0b0101110 :: rs2[4:0] :: rs1[4:0] :: 0b011 :: rd[4:0] :: 0b0101011; // TODO
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
@@ -334,7 +334,7 @@ InstructionSet XCoreVAlu extends RISCVBase {
                 myunion.W[0] = 4;
                 myunion.W = 4;  // invalid!
                 // union v32 vec1 = (union v32)X[rs1];
-                
+
                 //struct foobar {
                 //    unsigned<8> foo;
                 //    unsigned<16> bar[2];
@@ -363,7 +363,7 @@ InstructionSet XCoreVAlu extends RISCVBase {
                 // unsigned<8> temp2 = vec1.B[2] > vec2.B[2] ? vec1.B[2] : vec2.B[2];
                 // unsigned<8> temp3 = vec1.B[3] > vec2.B[3] ? vec1.B[3] : vec2.B[3];
                 // union v32 res;
-                // res.B[0] = vec1.B[0] > vec2.B[0] ? vec1.B[0] : vec2.B[0]; // vector_insert(res, 0) = umax(...) 
+                // res.B[0] = vec1.B[0] > vec2.B[0] ? vec1.B[0] : vec2.B[0]; // vector_insert(res, 0) = umax(...)
                 // res.B[1] = vec1.B[1] > vec2.B[1] ? vec1.B[1] : vec2.B[1]; // ...
                 // res.B[2] = vec1.B[2] > vec2.B[2] ? vec1.B[2] : vec2.B[2];
                 // res.B[3] = vec1.B[3] > vec2.B[3] ? vec1.B[3] : vec2.B[3];
@@ -377,7 +377,7 @@ InstructionSet XCoreVAlu extends RISCVBase {
                 //X[rd] = (unsigned<32>)vec1;
                 //X[rd] = (unsigned<32>)temp;
             }
-        }*/ 
+        }*/
     }
 }
 
@@ -388,12 +388,12 @@ InstructionSet XCoreVHwlp extends RISCVBase {
     functions {
         extern void yield();
     }
-    instructions {         
-        // lp.setup HW loop (Short Hardware Loop Setup Instruction)        
+    instructions {
+        // lp.setup HW loop (Short Hardware Loop Setup Instruction)
         LOOP {
             // instruction format: I-type
             // opcode space: custom-3 (inst[6:2] = 11110)
-            // opcode = 0b1111011, func3 = 0b100        
+            // opcode = 0b1111011, func3 = 0b100
             // uimmL[11:0] src1 100 0000 L 111 1011 -> lp.setup L,rs1, uimmL
             encoding: immL[12:1] :: rs1[4:0] :: 0b100 :: 0b0000 :: L[0:0] :: 0b1111011;
             assembly:"{L}, {name(rs1)}, {immL}";
@@ -410,7 +410,7 @@ InstructionSet XCoreVHwlp extends RISCVBase {
                 }*/
             }
         }
-        // lp.setupi HW loop (Short Hardware Loop Setup Instruction with immediate value for loop count)        
+        // lp.setupi HW loop (Short Hardware Loop Setup Instruction with immediate value for loop count)
         LOOPI {
             // instruction format: I-type
             // opcode space: custom-3 (inst[6:2] = 11110)
@@ -421,7 +421,7 @@ InstructionSet XCoreVHwlp extends RISCVBase {
             behavior: {
                 /*lpstart[L] = PC + 4;
                 lpend[L] = PC + (unsigned<5>)immS;
-                lpcount[L] = (unsigned<12>)immL; // one loop execution is implied    
+                lpcount[L] = (unsigned<12>)immL; // one loop execution is implied
                 spawn {
                     for (; lpcount[L] > 0; lpcount[L] -= 1) {  // TODO: support preincrement
                         PC = lpstart[L]; // jump to loop start

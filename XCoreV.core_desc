@@ -300,10 +300,10 @@ InstructionSet XCoreVMac extends RISCVBase {
             encoding: 2'b10 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b110 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
             behavior: {
-				signed<31> product = (unsigned)X[rs1][15:0] * (unsigned)X[rs2][15:0];
+				unsigned<30> product = (unsigned)(X[rs1][15:0]) * (unsigned)(X[rs2][15:0]);
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
-				unsigned<32> sum = product + powerOf2;
-				unsigned<32> rounded = sum >> Is3;
+				unsigned<33> sum = product + (unsigned)X[rd] + powerOf2;
+				unsigned<33> rounded = sum >> Is3;
 
 				X[rd] = rounded[31:0];
             }
@@ -312,10 +312,10 @@ InstructionSet XCoreVMac extends RISCVBase {
             encoding: 2'b11 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b110 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
             behavior: {
-				signed<31> product = (unsigned)X[rs1][31:16] * (unsigned)X[rs2][31:16];
+				unsigned<30> product = (unsigned)(X[rs1][31:16]) * (unsigned)(X[rs2][31:16]);
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
-				unsigned<32> sum = product + (unsigned)X[rd] + powerOf2;
-				unsigned<32> rounded = sum >> Is3;
+				unsigned<33> sum = product + (unsigned)X[rd] + powerOf2;
+				unsigned<33> rounded = sum >> Is3;
 
 				X[rd] = rounded[31:0];
             }

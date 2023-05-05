@@ -191,6 +191,14 @@ InstructionSet XCoreVMac extends RISCVBase {
               if(rd != 0) X[rd] = result[31:0];
             }
         }
+        CV_MULS {
+            encoding: 2'b00 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b0101011;
+            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
+            behavior: {
+              signed<32> result = ((signed)X[rs1][15:0] * (signed)X[rs2][15:0]) >> Is3;
+              if(rd != 0) X[rd] = result[31:0];
+            }
+        }
         CV_MULSN {
             encoding: 2'b00 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";

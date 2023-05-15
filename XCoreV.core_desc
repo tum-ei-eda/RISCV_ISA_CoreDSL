@@ -294,7 +294,7 @@ InstructionSet XCoreVMac extends RISCVBase {
         }
         CV_MULURN {
             encoding: 2'b10:: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b101 :: rd[4:0] :: 7'b0101011;
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
+            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				signed<31> product = (unsigned)X[rs1][15:0] * (unsigned)X[rs2][15:0];
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
@@ -306,7 +306,7 @@ InstructionSet XCoreVMac extends RISCVBase {
         }
         CV_MULHHURN {
             encoding: 2'b11:: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b101 :: rd[4:0] :: 7'b0101011;
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
+            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				signed<31> product = (unsigned)X[rs1][31:16] * (unsigned)X[rs2][31:16];
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
@@ -318,7 +318,7 @@ InstructionSet XCoreVMac extends RISCVBase {
         }
         CV_MULSRN {
             encoding: 2'b10:: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b100 :: rd[4:0] :: 7'b0101011;
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
+            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				signed<31> product = (signed)X[rs1][15:0] * (signed)X[rs2][15:0];
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
@@ -330,7 +330,7 @@ InstructionSet XCoreVMac extends RISCVBase {
         }
         CV_MULHHSRN {
             encoding: 2'b11:: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b100 :: rd[4:0] :: 7'b0101011;
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
+            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				signed<31> product = (signed)X[rs1][31:16] * (signed)X[rs2][31:16];
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
@@ -375,7 +375,7 @@ InstructionSet XCoreVMac extends RISCVBase {
         }
         CV_MACURN {
             encoding: 2'b10 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b110 :: rd[4:0] :: 7'b0101011;
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
+            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				unsigned<30> product = (unsigned)(X[rs1][15:0]) * (unsigned)(X[rs2][15:0]);
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
@@ -387,7 +387,7 @@ InstructionSet XCoreVMac extends RISCVBase {
         }
         CV_MACHHURN {
             encoding: 2'b11 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b110 :: rd[4:0] :: 7'b0101011;
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
+            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				unsigned<30> product = (unsigned)(X[rs1][31:16]) * (unsigned)(X[rs2][31:16]);
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
@@ -399,7 +399,7 @@ InstructionSet XCoreVMac extends RISCVBase {
         }
         CV_MACSRN {
             encoding: 2'b10 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b111 :: rd[4:0] :: 7'b0101011;
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
+            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				signed<31> product = (signed)X[rs1][15:0] * (signed)X[rs2][15:0];
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)
@@ -411,7 +411,7 @@ InstructionSet XCoreVMac extends RISCVBase {
         }
         CV_MACHHSRN {
             encoding: 2'b11 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 0b111 :: rd[4:0] :: 7'b0101011;
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {name(rs3)}, {Is3}";
+            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
             behavior: {
 				signed<31> product = (signed)X[rs1][31:16] * (signed)X[rs2][31:16];
 				unsigned<30> powerOf2 = 1 << (Is3-1);  // TODO: Is3 = max(Is3, 1)

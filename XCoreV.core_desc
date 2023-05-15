@@ -150,6 +150,83 @@ InstructionSet XCoreVMem extends RISCVBase {
                 if(rd != 0) X[rd] = (unsigned<XLEN>)res;
             }
         }
+        CV_LBU_rr_inc {
+            encoding: 7'b0001100 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
+            behavior: {
+                unsigned<XLEN> load_address = X[rs1];  // TODO: signed?
+                unsigned<8> res = (unsigned<8>)MEM[load_address];
+                if(rd != 0) X[rd] = (unsigned<XLEN>)res;
+                X[rs1] += (signed)X[rs2];
+            }
+        }
+        CV_LB_rr_inc {
+            encoding: 7'b0000100 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
+            behavior: {
+                unsigned<XLEN> load_address = X[rs1];  // TODO: signed?
+                signed<8> res = (signed<8>)MEM[load_address];
+                if(rd != 0) X[rd] = (unsigned<XLEN>)res;
+                X[rs1] += (signed)X[rs2];
+            }
+        }
+        CV_LHU_rr_inc {
+            encoding: 7'b0001101 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
+            behavior: {
+                unsigned<XLEN> load_address = X[rs1];  // TODO: signed?
+                unsigned<16> res = (unsigned<16>)MEM[load_address];
+                if(rd != 0) X[rd] = (unsigned<XLEN>)res;
+                X[rs1] += (signed)X[rs2];
+            }
+        }
+        CV_LH_rr_inc {
+            encoding: 7'b0000101 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
+            behavior: {
+                unsigned<XLEN> load_address = X[rs1];  // TODO: signed?
+                signed<16> res = (signed<16>)MEM[load_address];
+                if(rd != 0) X[rd] = (unsigned<XLEN>)res;
+                X[rs1] += (signed)X[rs2];
+            }
+        }
+        CV_LW_rr_inc {
+            encoding: 7'b0000010 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
+            behavior: {
+                unsigned<XLEN> load_address = X[rs1];  // TODO: signed?
+                signed<32> res = (signed<32>)MEM[load_address];
+                if(rd != 0) X[rd] = (unsigned<XLEN>)res;
+                X[rs1] += (signed)X[rs2];
+            }
+        }
+        CV_SB_rr_inc {
+            encoding: 7'b0010000 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rs3[4:0] :: 7'b0101011;
+            assembly:"{name(rs2)}, {name(rs3)}({name(rs1)})";
+            behavior: {
+                unsigned<XLEN> store_address = X[rs1];  // TODO: signed?
+								MEM[store_address] = (signed<8>)X[rs2];
+                X[rs1] += (signed)X[rs3];
+            }
+        }
+        CV_SH_rr_inc {
+            encoding: 7'b0010001 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rs3[4:0] :: 7'b0101011;
+            assembly:"{name(rs2)}, {name(rs3)}({name(rs1)})";
+            behavior: {
+                unsigned<XLEN> store_address = X[rs1];  // TODO: signed?
+								MEM[store_address] = (signed<16>)X[rs2];
+                X[rs1] += (signed)X[rs3];
+            }
+        }
+        CV_SW_rr_inc {
+            encoding: 7'b0010010 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rs3[4:0] :: 7'b0101011;
+            assembly:"{name(rs2)}, {name(rs3)}({name(rs1)})";
+            behavior: {
+                unsigned<XLEN> store_address = X[rs1];  // TODO: signed?
+								MEM[store_address] = (signed<32>)X[rs2];
+                X[rs1] += (signed)X[rs3];
+            }
+        }
     }
 }
 

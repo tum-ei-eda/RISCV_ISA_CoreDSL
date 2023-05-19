@@ -433,130 +433,15 @@ InstructionSet XCoreVAlu extends RISCVBase {
 				X[rd] = X[rs1] > X[rs2] ? X[rs1] : X[rs2];  // unsigned
             }
         }
-        /*CV_MAXU_B {
-            encoding: 0b0101110 :: rs2[4:0] :: rs1[4:0] :: 0b011 :: rd[4:0] :: 0b0101011; // TODO
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
-            behavior: {
-                //X[rd][15:8] = ((unsigned<12>)rs1 + (signed<4>)(5 * rs2));
-                //X[rd][rs2:rs1] = 42;
-                signed<8> B[4];
-                // signed<8> B[4] = {1, 2, 3, 4};
-                X[rd] = B;
-                short x;
-                union v32 {
-                    unsigned<8> B[4];
-                    unsigned<16> H[2];
-                    unsigned<32> W[1];
-                    unsigned<32> W2;
-                };
-                union v32 myunion;
-                union v32_ {
-                    unsigned<8> B[4];
-                    unsigned<16> H[2];
-                    unsigned<32> W[1];
-                    unsigned<32> W_;
-                } myunion_;
-                myunion.W2 = 5;
-                myunion.W[0] = 4;
-                myunion.W = 4;  // invalid!
-                // union v32 vec1 = (union v32)X[rs1];
-
-                //struct foobar {
-                //    unsigned<8> foo;
-                //    unsigned<16> bar[2];
-                //};
-                //struct foobar mystruct;
-                //struct foobar mystruct = {8'b00110011, 16'b1111111100000000};
-                //struct foobar {
-                //    unsigned<8> foo;
-                //    unsigned<16> bar[2];
-                //} mystruct_;
-
-                // Approach A
-                union v32 vec1 = (union v32)X[rs1];
-                union v32 vec2 = (union v32)X[rs2];
-                union v32 temp;
-                for (int i = 0; i < 4; i += 1) {
-                    temp.B[i] = vec1.B[i] > vec2.B[i] ? vec1.B[i] : vec2.B[i];  // unsigned
-                    // X[rd][8*(i+1)-1:i] = X[rs1][8*(i+1)-1:i] > X[rs2][8*(i+1)-1:i] ? X[rs1][8*(i+1)-1:i] : X[rs2][8*(i+1)-1:i];  // unsigned
-                }
-                X[rd] = (unsigned<32>)temp;
-                // Approach B
-                // union v32 vec1 = (union v32)X[rs1];  // vec1 = v4i8(rs1)
-                // union v32 vec2 = (union v32)X[rs2];  // vec2 = v4i8(rs2)
-                // unsigned<8> temp0 = vec1.B[0] > vec2.B[0] ? vec1.B[0] : vec2.B[0]; // umax(and(vector_extract(vec1, 0), 0xff), and(vector_extract(vec2, 0), 0xff))
-                // unsigned<8> temp1 = vec1.B[1] > vec2.B[1] ? vec1.B[1] : vec2.B[1]; // ...
-                // unsigned<8> temp2 = vec1.B[2] > vec2.B[2] ? vec1.B[2] : vec2.B[2];
-                // unsigned<8> temp3 = vec1.B[3] > vec2.B[3] ? vec1.B[3] : vec2.B[3];
-                // union v32 res;
-                // res.B[0] = vec1.B[0] > vec2.B[0] ? vec1.B[0] : vec2.B[0]; // vector_insert(res, 0) = umax(...)
-                // res.B[1] = vec1.B[1] > vec2.B[1] ? vec1.B[1] : vec2.B[1]; // ...
-                // res.B[2] = vec1.B[2] > vec2.B[2] ? vec1.B[2] : vec2.B[2];
-                // res.B[3] = vec1.B[3] > vec2.B[3] ? vec1.B[3] : vec2.B[3];
-                // Ideal: elementwise ops ->  res .= vec1 .> vec2 .? vec1 .: vec2;
-                // X[rd] = (unsigned<XLEN>)res;
-                unsigned<8> temp0 = X[rs1][7:0] > X[rs2][7:0] ? X[rs1][7:0] : X[rs2][7:0];
-                unsigned<8> temp1 = X[rs1][15:8] > X[rs2][15:8] ? X[rs1][15:8] : X[rs2][15:8];
-                unsigned<8> temp2 = X[rs1][23:16] > X[rs2][23:16] ? X[rs1][23:16] : X[rs2][23:16];
-                unsigned<8> temp3 = X[rs1][31:24] > X[rs2][31:24] ? X[rs1][31:24] : X[rs2][31:24];
-                X[rd] = temp3 :: temp2 :: temp1 :: temp0;
-                //X[rd] = (unsigned<32>)vec1;
-                //X[rd] = (unsigned<32>)temp;
-            }
-        }*/
     }
 }
 
 InstructionSet XCoreVHwlp extends RISCVBase {
-    architectural_state {
-         register unsigned<XLEN> lpstart[2], lpcount[2], lpend[2];
-    }
-    functions {
-        extern void yield();
-    }
-    instructions {
-        // lp.setup HW loop (Short Hardware Loop Setup Instruction)
-        LOOP {
-            // instruction format: I-type
-            // opcode space: custom-3 (inst[6:2] = 11110)
-            // opcode = 0b1111011, func3 = 0b100
-            // uimmL[11:0] src1 100 0000 L 111 1011 -> lp.setup L,rs1, uimmL
-            encoding: immL[12:1] :: rs1[4:0] :: 0b100 :: 0b0000 :: L[0:0] :: 0b1111011;
-            assembly:"{L}, {name(rs1)}, {immL}";
-            behavior: {
-                // L: loop level (two loop levels would be sufficient); L=0 has higher priority and is considered as the inner loop.
-                /*lpstart[L] = PC + 4;
-                lpend[L]   = PC + (unsigned<12>)immL;
-                lpcount[L] = rs1; // one loop execution is implied
-                spawn {
-                    for (; lpcount[L] > 0; lpcount[L] -= 1) {  // TODO: support preincrement
-                        PC = lpstart[L]; // jump to loop start
-                        do yield(); while (PC != lpend[L]);
-                    }
-                }*/
-            }
-        }
-        // lp.setupi HW loop (Short Hardware Loop Setup Instruction with immediate value for loop count)
-        LOOPI {
-            // instruction format: I-type
-            // opcode space: custom-3 (inst[6:2] = 11110)
-            // opcode = 0b1111011, func3 = 0b101
-            // uimmL[11:0] uimmS[4:0] 101 0000 L 111 1011 -> lp.setupi L, uimmS, uimmL
-            encoding: immL[11:0] :: immS[5:1] :: 0b101 :: 0b0000 :: L[0:0] :: 0b1111011;
-            assembly:"{L}, {immL}, {immS}";
-            behavior: {
-                /*lpstart[L] = PC + 4;
-                lpend[L] = PC + (unsigned<5>)immS;
-                lpcount[L] = (unsigned<12>)immL; // one loop execution is implied
-                spawn {
-                    for (; lpcount[L] > 0; lpcount[L] -= 1) {  // TODO: support preincrement
-                        PC = lpstart[L]; // jump to loop start
-                        do yield(); while (PC != lpend[L]);
-                    }
-                }*/
-            }
-        }
-    }
+
+}
+
+InstructionSet XCoreVSimd extends RISCVBase {
+
 }
 
 InstructionSet XCoreVBranchImmediate extends RISCVBase {
@@ -593,8 +478,7 @@ InstructionSet XCoreVBranchImmediate extends RISCVBase {
 }
 
 
-// InstructionSet XCoreV extends XCoreVMac, XCoreVMem, XCoreVAlu, XCoreVHwlp {
-InstructionSet XCoreV extends XCoreVMac, XCoreVMem, XCoreVBranchImmediate {
+InstructionSet XCoreV extends XCoreVMac, XCoreVMem, XCoreVBranchImmediate, XCoreVAlu. XCoreVSimd, XCoreVHwlp {
     architectural_state {
         unsigned<1> A = 1;  // TODO: Remove
     }

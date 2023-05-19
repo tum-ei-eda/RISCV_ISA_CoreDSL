@@ -14,7 +14,7 @@ InstructionSet XCoreVMem extends RISCVBase {
             }
         }
         CV_LBU_ri_inc {
-            encoding: imm12[11:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b000 1011;
+            encoding: imm12[11:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b0001011;
             assembly:"{name(rd)}, {imm12}({name(rs1)}!)";
             behavior: {
                 unsigned<XLEN> load_address = X[rs1];

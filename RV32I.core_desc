@@ -434,7 +434,7 @@ InstructionSet Zifencei extends RISCVBase {
     instructions {
         FENCE_I [[flush]] {
             encoding: imm[11:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b0001111 ;
-            assembly:"{name(rs1)}, {name(rd)}, {imm}";
+            assembly: {"{name(rs1)}, {name(rd)}, {imm}"};
             behavior: FENCE[fencei] = imm;
         }
     }

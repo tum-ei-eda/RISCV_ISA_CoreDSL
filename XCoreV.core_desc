@@ -426,11 +426,32 @@ InstructionSet XCoreVMac extends RISCVBase {
 
 InstructionSet XCoreVAlu extends RISCVBase {
     instructions {
+        CV_MAX {
+            encoding: 0b0101101 :: rs2[4:0] :: rs1[4:0] :: 0b011 :: rd[4:0] :: 0b0101011; // TODO
+            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
+            behavior: {
+                X[rd] = (signed)X[rs1] > (signed)X[rs2] ? X[rs1] : X[rs2];  // signed
+            }
+        }
         CV_MAXU {
             encoding: 0b0101110 :: rs2[4:0] :: rs1[4:0] :: 0b011 :: rd[4:0] :: 0b0101011; // TODO
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
             behavior: {
-				X[rd] = X[rs1] > X[rs2] ? X[rs1] : X[rs2];  // unsigned
+                X[rd] = (unsigned)X[rs1] > (unsigned)X[rs2] ? X[rs1] : X[rs2];  // unsigned
+            }
+        }
+        CV_MIN {
+            encoding: 0b0101011 :: rs2[4:0] :: rs1[4:0] :: 0b011 :: rd[4:0] :: 0b0101011; // TODO
+            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
+            behavior: {
+                X[rd] = (signed)X[rs1] < (signed)X[rs2] ? X[rs1] : X[rs2];  // signed
+            }
+        }
+        CV_MINU {
+            encoding: 0b0101100 :: rs2[4:0] :: rs1[4:0] :: 0b011 :: rd[4:0] :: 0b0101011; // TODO
+            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
+            behavior: {
+                X[rd] = (unsigned)X[rs1] < (unsigned)X[rs2] ? X[rs1] : X[rs2];  // unsigned
             }
         }
     }

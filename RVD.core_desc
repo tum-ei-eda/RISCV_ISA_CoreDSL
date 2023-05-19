@@ -25,7 +25,7 @@ InstructionSet RV32D extends RV32F {
     instructions {
         FLD {
             encoding: imm[11:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0000111;
-            assembly:"f {rd}, {imm}({name(rs1)})";
+            assembly: "f {rd}, {imm}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> offs = X[rs1 % RFS] + (signed<12>)imm;
                 unsigned<64> res = (unsigned<64>)MEM[offs];
@@ -39,7 +39,7 @@ InstructionSet RV32D extends RV32F {
 
         FSD {
             encoding: imm[11:5] :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: imm[4:0] :: 7'b0100111;
-            assembly:"f {rs2}, {imm}({name(rs1)})";
+            assembly: "f {rs2}, {imm}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> offs = X[rs1 % RFS] + (signed<12>)imm;
                 MEM[offs] = (unsigned<64>)F[rs2];

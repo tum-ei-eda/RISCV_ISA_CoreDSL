@@ -14,7 +14,7 @@ InstructionSet XCoreVMem extends RISCVBase {
             }
         }
         CV_LBU_ri_inc {
-            encoding: imm12[11:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b0001011;
+            encoding: imm12[11:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b000 1011;
             assembly:"{name(rd)}, {imm12}({name(rs1)}!)";
             behavior: {
                 unsigned<XLEN> load_address = X[rs1];
@@ -54,7 +54,7 @@ InstructionSet XCoreVMem extends RISCVBase {
             }
         }
         CV_LB_rr_inc {
-            encoding: 7'b0000100 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            encoding: 7'b0000000 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> load_address = X[rs1];  // TODO: signed?
@@ -64,7 +64,7 @@ InstructionSet XCoreVMem extends RISCVBase {
             }
         }
         CV_LBU_rr_inc {
-            encoding: 7'b0001100 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            encoding: 7'b0001000 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> load_address = X[rs1];  // TODO: signed?
@@ -74,7 +74,7 @@ InstructionSet XCoreVMem extends RISCVBase {
             }
         }
         CV_LH_rr_inc {
-            encoding: 7'b0000101 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            encoding: 7'b0000001 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> load_address = X[rs1];  // TODO: signed?
@@ -84,7 +84,7 @@ InstructionSet XCoreVMem extends RISCVBase {
             }
         }
         CV_LHU_rr_inc {
-            encoding: 7'b0001101 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            encoding: 7'b0001001 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> load_address = X[rs1];  // TODO: signed?
@@ -103,17 +103,8 @@ InstructionSet XCoreVMem extends RISCVBase {
                 X[rs1] += (signed)X[rs2];
             }
         }
-        CV_LBU_rr {
-            encoding: 7'b0000000 :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0000011;
-            assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
-            behavior: {
-                unsigned<XLEN> load_address = X[rs1] + X[rs2];  // TODO: signed?
-                unsigned<8> res = (unsigned<8>)MEM[load_address];
-                if(rd != 0) X[rd] = (unsigned<XLEN>)res;
-            }
-        }
         CV_LB_rr {
-            encoding: 7'b0100000 :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0000011;
+            encoding: 7'b0000100 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> load_address = X[rs1] + X[rs2];  // TODO: signed?
@@ -121,8 +112,17 @@ InstructionSet XCoreVMem extends RISCVBase {
                 if(rd != 0) X[rd] = (unsigned<XLEN>)res;
             }
         }
+        CV_LBU_rr {
+            encoding: 7'b0001100 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
+            behavior: {
+                unsigned<XLEN> load_address = X[rs1] + X[rs2];  // TODO: signed?
+                unsigned<8> res = (unsigned<8>)MEM[load_address];
+                if(rd != 0) X[rd] = (unsigned<XLEN>)res;
+            }
+        }
         CV_LH_rr {
-            encoding: 7'b0001000 :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0000011;
+            encoding: 7'b0000101 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> load_address = X[rs1] + X[rs2];  // TODO: signed?
@@ -131,7 +131,7 @@ InstructionSet XCoreVMem extends RISCVBase {
             }
         }
         CV_LHU_rr {
-            encoding: 7'b0101000 :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0000011;
+            encoding: 7'b0001101 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> load_address = X[rs1] + X[rs2];  // TODO: signed?
@@ -140,7 +140,7 @@ InstructionSet XCoreVMem extends RISCVBase {
             }
         }
         CV_LW_rr {
-            encoding: 7'b0010000 :: rs2[4:0] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b0000011;
+            encoding: 7'b0000110 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs2)}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> load_address = X[rs1] + X[rs2];  // TODO: signed?
@@ -203,7 +203,7 @@ InstructionSet XCoreVMem extends RISCVBase {
             }
         }
         CV_SB_rr {
-            encoding: 7'b0000000 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rs3[4:0] :: 7'b0100011;
+            encoding: 7'b0010100 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rs3[4:0] :: 7'b0101011;
             assembly:"{name(rs2)}, {name(rs3)}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> store_address = X[rs1] + X[rs3];  // TODO: signed?
@@ -211,7 +211,7 @@ InstructionSet XCoreVMem extends RISCVBase {
             }
         }
         CV_SH_rr {
-            encoding: 7'b0000000 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rs3[4:0] :: 7'b0100011;
+            encoding: 7'b0010101 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rs3[4:0] :: 7'b0101011;
             assembly:"{name(rs2)}, {name(rs3)}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> store_address = X[rs1] + X[rs3];  // TODO: signed?
@@ -219,7 +219,7 @@ InstructionSet XCoreVMem extends RISCVBase {
             }
         }
         CV_SW_rr {
-            encoding: 7'b0000000 :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rs3[4:0] :: 7'b0100011;
+            encoding: 7'b0010110 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rs3[4:0] :: 7'b0101011;
             assembly:"{name(rs2)}, {name(rs3)}({name(rs1)})";
             behavior: {
                 signed<32> result = 0;

@@ -234,7 +234,7 @@ InstructionSet XCoreVMac extends RISCVBase {
     instructions {
         // 32-Bit x 32-Bit Multiplication Operations (Signed)
         CV_MAC {
-            encoding: 7'b0100001 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b0110011;
+            encoding: 7'b1001000 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
             behavior: {
               // signed<65> result = (signed)X[rs1] * (signed)X[rs2] + (signed)X[rd];
@@ -243,7 +243,7 @@ InstructionSet XCoreVMac extends RISCVBase {
             }
         }
         CV_MSU {
-            encoding: 7'b0100001 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b0110011;
+            encoding: 7'b1001001 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
             behavior: {
               // signed<65> result = (signed)X[rd] - (signed)X[rs1] * (signed)X[rs2] ;

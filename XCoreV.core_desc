@@ -458,7 +458,15 @@ InstructionSet XCoreVAlu extends RISCVBase {
 }
 
 InstructionSet XCoreVHwlp extends RISCVBase {
+    instructions {
 
+    }
+}
+
+InstructionSet XCoreVBitmanip extends RISCVBase {
+    instructions {
+
+    }
 }
 
 InstructionSet XCoreVSimd extends RISCVBase {
@@ -499,7 +507,7 @@ InstructionSet XCoreVBranchImmediate extends RISCVBase {
 }
 
 
-InstructionSet XCoreV extends XCoreVMac, XCoreVMem, XCoreVBranchImmediate, XCoreVAlu. XCoreVSimd, XCoreVHwlp {
+InstructionSet XCoreV extends XCoreVMac, XCoreVMem, XCoreVBranchImmediate, XCoreVAlu, XCoreVBitmanip, XCoreVSimd, XCoreVHwlp {
     architectural_state {
         unsigned<1> A = 1;  // TODO: Remove
     }

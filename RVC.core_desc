@@ -57,7 +57,7 @@ InstructionSet RV32IC extends RV32I {
 
         CLI {//(RV32)
             encoding: 3'b010 :: imm[5:5] :: rd[4:0] :: imm[4:0] :: 2'b01;
-            assembly: "{name(rd)}, {imm:#05x}";
+            assembly: {"c.li", "{name(rd)}, {imm:#05x}"};
             behavior: {
                 if ((rd % RFS) != 0) X[rd % RFS] = (signed<6>)imm;
             }
@@ -453,7 +453,7 @@ InstructionSet RV128IC extends RV64IC {
         }
         CSLLI64 {//(RV128)
             encoding: 3'b000:: 0b0 :: rs1[4:0] :: 0b0000 :: 2'b10;
-            assembly: "{name(rs1)}";
+            assembly: {"c.slli64", "{name(rs1)}"};
             behavior: {
                 if(rs1 == 0) raise(0, 2);
                 X[rs1] = X[rs1] << 64;

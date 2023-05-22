@@ -392,7 +392,7 @@ InstructionSet RV64IC extends RV32IC {
             assembly: "{name(8+rd)}, {name(8+rd)}, {name(8+rs2)}";
             behavior: {
                 signed<32> res = (signed<32>)X[rd + 8] - (signed<32>)X[rs2 + 8];
-                X[rd + 8] = (signed<XLEN>)res;
+                X[rd + 8] = (unsigned<XLEN>)res;
             }
         }
 
@@ -401,7 +401,7 @@ InstructionSet RV64IC extends RV32IC {
             assembly: "{name(8+rd)}, {name(8+rd)}, {name(8+rs2)}";
             behavior: {
 	            signed<32> res = (signed<32>)X[rd + 8] + (signed<32>)X[rs2 + 8];
-	            X[rd + 8] = (signed<XLEN>)res;
+	            X[rd + 8] = (unsigned<XLEN>)res;
             }
         }
 
@@ -415,8 +415,11 @@ InstructionSet RV64IC extends RV32IC {
             encoding: 3'b011 :: uimm[5:5] :: rd[4:0] :: uimm[4:3] :: uimm[8:6] :: 2'b10;
             assembly: "{name(rd)}, {uimm}(sp)";
             behavior: if(rd >= RFS || rd == 0) raise(0, 2); else {
-                unsigned<XLEN> res = MEM[X[2] + uimm];
-                X[rd] = res;
+                unsigned<XLEN> offs = X[2] + uimm;
+                signed<64> res = MEM[offs];
+
+                if (rd != 0)
+                    X[rd] = res;
             }
         }
 

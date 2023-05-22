@@ -128,7 +128,7 @@ InstructionSet RV64I extends RV32I {
                 if (rd != 0) {
                     unsigned<32> count = (unsigned)X[rs2] & 0x1f;
                     unsigned<32> sh_val = ((unsigned<32>)X[rs1]) << count;
-                    X[rd] = (signed<XLEN>)(signed)sh_val;
+                    X[rd] = (unsigned<XLEN>)(signed)sh_val;
                 }
             }
         }
@@ -140,7 +140,7 @@ InstructionSet RV64I extends RV32I {
                 if (rd != 0) {
                     unsigned<32> count = (unsigned)X[rs2] & 0x1f;
                     unsigned<32> sh_val = ((unsigned<32>)X[rs1]) >> count;
-                    X[rd] = (signed<XLEN>)(signed)sh_val;
+                    X[rd] = (unsigned<XLEN>)(signed)sh_val;
                 }
             }
         }

@@ -2645,7 +2645,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CPLXCONJ {
-		encoding: 5'b01011 :: 1'b1 :: 1'b0 :: xxxxx[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01011 :: 1'b1 :: 1'b0 :: 5'b00000 :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}";
 		behavior: {
 			if (rd != 0) {

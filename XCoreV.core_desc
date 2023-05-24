@@ -470,7 +470,7 @@ InstructionSet XCoreVBitmanip extends RISCVBase {
 
 InstructionSet XCoreVSimd extends RISCVBase {
     instructions {
-CV_ADD_H {
+	CV_ADD_H {
 		encoding: 5'b00000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
@@ -1951,420 +1951,660 @@ CV_ADD_H {
 		encoding: 5'b00000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)(X[rs1][15: 0] == X[rs2][15: 0]));
+				X[rd][31:16] = (unsigned<16>)((signed)(X[rs1][31:16] == X[rs2][31:16]));
+			}
 		}
 	}
 	CV_CMPEQ_SC_H {
 		encoding: 5'b00000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)(X[rs1][15: 0] == X[rs2][15:0]));
+				X[rd][31:16] = (unsigned<16>)((signed)(X[rs1][31:16] == X[rs2][15:0]));
+			}
 		}
 	}
 	CV_CMPEQ_SCI_H {
 		encoding: 5'b00000 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)(X[rs1][15: 0] == ((unsigned<16>)((signed)Imm6))));
+				X[rd][31:16] = (unsigned<16>)((signed)(X[rs1][31:16] == ((unsigned<16>)((signed)Imm6))));
+			}
 		}
 	}
 	CV_CMPEQ_B {
 		encoding: 5'b00000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)(X[rs1][ 7: 0] == X[rs2][ 7: 0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)(X[rs1][15: 8] == X[rs2][15: 8]));
+				X[rd][23:16] = (unsigned<8>)((signed)(X[rs1][23:16] == X[rs2][23:16]));
+				X[rd][31:24] = (unsigned<8>)((signed)(X[rs1][31:24] == X[rs2][31:24]));
+			}
 		}
 	}
 	CV_CMPEQ_SC_B {
 		encoding: 5'b00000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)(X[rs1][ 7: 0] == X[rs2][7:0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)(X[rs1][15: 8] == X[rs2][7:0]));
+				X[rd][23:16] = (unsigned<8>)((signed)(X[rs1][23:16] == X[rs2][7:0]));
+				X[rd][31:24] = (unsigned<8>)((signed)(X[rs1][31:24] == X[rs2][7:0]));
+			}
 		}
 	}
 	CV_CMPEQ_SCI_B {
 		encoding: 5'b00000 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)(X[rs1][ 7: 0] == ((unsigned<8>)((signed)Imm6))));
+				X[rd][15: 8] = (unsigned<8>)((signed)(X[rs1][15: 8] == ((unsigned<8>)((signed)Imm6))));
+				X[rd][23:16] = (unsigned<8>)((signed)(X[rs1][23:16] == ((unsigned<8>)((signed)Imm6))));
+				X[rd][31:24] = (unsigned<8>)((signed)(X[rs1][31:24] == ((unsigned<8>)((signed)Imm6))));
+			}
 		}
 	}
 	CV_CMPNE_H {
 		encoding: 5'b00001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)(X[rs1][15: 0] != X[rs2][15: 0]));
+				X[rd][31:16] = (unsigned<16>)((signed)(X[rs1][31:16] != X[rs2][31:16]));
+			}
 		}
 	}
 	CV_CMPNE_SC_H {
 		encoding: 5'b00001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)(X[rs1][15: 0] != X[rs2][15:0]));
+				X[rd][31:16] = (unsigned<16>)((signed)(X[rs1][31:16] != X[rs2][15:0]));
+			}
 		}
 	}
 	CV_CMPNE_SCI_H {
 		encoding: 5'b00001 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)(X[rs1][15: 0] != ((unsigned<16>)((signed)Imm6))));
+				X[rd][31:16] = (unsigned<16>)((signed)(X[rs1][31:16] != ((unsigned<16>)((signed)Imm6))));
+			}
 		}
 	}
 	CV_CMPNE_B {
 		encoding: 5'b00001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)(X[rs1][ 7: 0] != X[rs2][ 7: 0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)(X[rs1][15: 8] != X[rs2][15: 8]));
+				X[rd][23:16] = (unsigned<8>)((signed)(X[rs1][23:16] != X[rs2][23:16]));
+				X[rd][31:24] = (unsigned<8>)((signed)(X[rs1][31:24] != X[rs2][31:24]));
+			}
 		}
 	}
 	CV_CMPNE_SC_B {
 		encoding: 5'b00001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)(X[rs1][ 7: 0] != X[rs2][7:0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)(X[rs1][15: 8] != X[rs2][7:0]));
+				X[rd][23:16] = (unsigned<8>)((signed)(X[rs1][23:16] != X[rs2][7:0]));
+				X[rd][31:24] = (unsigned<8>)((signed)(X[rs1][31:24] != X[rs2][7:0]));
+			}
 		}
 	}
 	CV_CMPNE_SCI_B {
 		encoding: 5'b00001 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)(X[rs1][ 7: 0] != ((unsigned<8>)((signed)Imm6))));
+				X[rd][15: 8] = (unsigned<8>)((signed)(X[rs1][15: 8] != ((unsigned<8>)((signed)Imm6))));
+				X[rd][23:16] = (unsigned<8>)((signed)(X[rs1][23:16] != ((unsigned<8>)((signed)Imm6))));
+				X[rd][31:24] = (unsigned<8>)((signed)(X[rs1][31:24] != ((unsigned<8>)((signed)Imm6))));
+			}
 		}
 	}
 	CV_CMPGT_H {
 		encoding: 5'b00010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((signed)X[rs1][15: 0] > (signed)X[rs2][15: 0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((signed)X[rs1][31:16] > (signed)X[rs2][31:16]));
+			}
 		}
 	}
 	CV_CMPGT_SC_H {
 		encoding: 5'b00010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((signed)X[rs1][15: 0] > (signed)X[rs2][15:0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((signed)X[rs1][31:16] > (signed)X[rs2][15:0]));
+			}
 		}
 	}
 	CV_CMPGT_SCI_H {
 		encoding: 5'b00010 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((signed)X[rs1][15: 0] > (signed)((unsigned<16>)((signed)Imm6))));
+				X[rd][31:16] = (unsigned<16>)((signed)((signed)X[rs1][31:16] > (signed)((unsigned<16>)((signed)Imm6))));
+			}
 		}
 	}
 	CV_CMPGT_B {
 		encoding: 5'b00010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((signed)X[rs1][ 7: 0] > (signed)X[rs2][ 7: 0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((signed)X[rs1][15: 8] > (signed)X[rs2][15: 8]));
+				X[rd][23:16] = (unsigned<8>)((signed)((signed)X[rs1][23:16] > (signed)X[rs2][23:16]));
+				X[rd][31:24] = (unsigned<8>)((signed)((signed)X[rs1][31:24] > (signed)X[rs2][31:24]));
+			}
 		}
 	}
 	CV_CMPGT_SC_B {
 		encoding: 5'b00010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((signed)X[rs1][ 7: 0] > (signed)X[rs2][7:0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((signed)X[rs1][15: 8] > (signed)X[rs2][7:0]));
+				X[rd][23:16] = (unsigned<8>)((signed)((signed)X[rs1][23:16] > (signed)X[rs2][7:0]));
+				X[rd][31:24] = (unsigned<8>)((signed)((signed)X[rs1][31:24] > (signed)X[rs2][7:0]));
+			}
 		}
 	}
 	CV_CMPGT_SCI_B {
 		encoding: 5'b00010 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((signed)X[rs1][ 7: 0] > (signed)((unsigned<8>)((signed)Imm6))));
+				X[rd][15: 8] = (unsigned<8>)((signed)((signed)X[rs1][15: 8] > (signed)((unsigned<8>)((signed)Imm6))));
+				X[rd][23:16] = (unsigned<8>)((signed)((signed)X[rs1][23:16] > (signed)((unsigned<8>)((signed)Imm6))));
+				X[rd][31:24] = (unsigned<8>)((signed)((signed)X[rs1][31:24] > (signed)((unsigned<8>)((signed)Imm6))));
+			}
 		}
 	}
 	CV_CMPGE_H {
 		encoding: 5'b00011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((signed)X[rs1][15: 0] >= (signed)X[rs2][15: 0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((signed)X[rs1][31:16] >= (signed)X[rs2][31:16]));
+			}
 		}
 	}
 	CV_CMPGE_SC_H {
 		encoding: 5'b00011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((signed)X[rs1][15: 0] >= (signed)X[rs2][15:0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((signed)X[rs1][31:16] >= (signed)X[rs2][15:0]));
+			}
 		}
 	}
 	CV_CMPGE_SCI_H {
 		encoding: 5'b00011 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((signed)X[rs1][15: 0] >= (signed)((unsigned<16>)((signed)Imm6))));
+				X[rd][31:16] = (unsigned<16>)((signed)((signed)X[rs1][31:16] >= (signed)((unsigned<16>)((signed)Imm6))));
+			}
 		}
 	}
 	CV_CMPGE_B {
 		encoding: 5'b00011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((signed)X[rs1][ 7: 0] >= (signed)X[rs2][ 7: 0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((signed)X[rs1][15: 8] >= (signed)X[rs2][15: 8]));
+				X[rd][23:16] = (unsigned<8>)((signed)((signed)X[rs1][23:16] >= (signed)X[rs2][23:16]));
+				X[rd][31:24] = (unsigned<8>)((signed)((signed)X[rs1][31:24] >= (signed)X[rs2][31:24]));
+			}
 		}
 	}
 	CV_CMPGE_SC_B {
 		encoding: 5'b00011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((signed)X[rs1][ 7: 0] >= (signed)X[rs2][7:0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((signed)X[rs1][15: 8] >= (signed)X[rs2][7:0]));
+				X[rd][23:16] = (unsigned<8>)((signed)((signed)X[rs1][23:16] >= (signed)X[rs2][7:0]));
+				X[rd][31:24] = (unsigned<8>)((signed)((signed)X[rs1][31:24] >= (signed)X[rs2][7:0]));
+			}
 		}
 	}
 	CV_CMPGE_SCI_B {
 		encoding: 5'b00011 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((signed)X[rs1][ 7: 0] >= (signed)((unsigned<8>)((signed)Imm6))));
+				X[rd][15: 8] = (unsigned<8>)((signed)((signed)X[rs1][15: 8] >= (signed)((unsigned<8>)((signed)Imm6))));
+				X[rd][23:16] = (unsigned<8>)((signed)((signed)X[rs1][23:16] >= (signed)((unsigned<8>)((signed)Imm6))));
+				X[rd][31:24] = (unsigned<8>)((signed)((signed)X[rs1][31:24] >= (signed)((unsigned<8>)((signed)Imm6))));
+			}
 		}
 	}
 	CV_CMPLT_H {
 		encoding: 5'b00100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((signed)X[rs1][15: 0] < (signed)X[rs2][15: 0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((signed)X[rs1][31:16] < (signed)X[rs2][31:16]));
+			}
 		}
 	}
 	CV_CMPLT_SC_H {
 		encoding: 5'b00100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((signed)X[rs1][15: 0] < (signed)X[rs2][15:0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((signed)X[rs1][31:16] < (signed)X[rs2][15:0]));
+			}
 		}
 	}
 	CV_CMPLT_SCI_H {
 		encoding: 5'b00100 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((signed)X[rs1][15: 0] < (signed)((unsigned<16>)((signed)Imm6))));
+				X[rd][31:16] = (unsigned<16>)((signed)((signed)X[rs1][31:16] < (signed)((unsigned<16>)((signed)Imm6))));
+			}
 		}
 	}
 	CV_CMPLT_B {
 		encoding: 5'b00100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((signed)X[rs1][ 7: 0] < (signed)X[rs2][ 7: 0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((signed)X[rs1][15: 8] < (signed)X[rs2][15: 8]));
+				X[rd][23:16] = (unsigned<8>)((signed)((signed)X[rs1][23:16] < (signed)X[rs2][23:16]));
+				X[rd][31:24] = (unsigned<8>)((signed)((signed)X[rs1][31:24] < (signed)X[rs2][31:24]));
+			}
 		}
 	}
 	CV_CMPLT_SC_B {
 		encoding: 5'b00100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((signed)X[rs1][ 7: 0] < (signed)X[rs2][7:0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((signed)X[rs1][15: 8] < (signed)X[rs2][7:0]));
+				X[rd][23:16] = (unsigned<8>)((signed)((signed)X[rs1][23:16] < (signed)X[rs2][7:0]));
+				X[rd][31:24] = (unsigned<8>)((signed)((signed)X[rs1][31:24] < (signed)X[rs2][7:0]));
+			}
 		}
 	}
 	CV_CMPLT_SCI_B {
 		encoding: 5'b00100 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((signed)X[rs1][ 7: 0] < (signed)((unsigned<8>)((signed)Imm6))));
+				X[rd][15: 8] = (unsigned<8>)((signed)((signed)X[rs1][15: 8] < (signed)((unsigned<8>)((signed)Imm6))));
+				X[rd][23:16] = (unsigned<8>)((signed)((signed)X[rs1][23:16] < (signed)((unsigned<8>)((signed)Imm6))));
+				X[rd][31:24] = (unsigned<8>)((signed)((signed)X[rs1][31:24] < (signed)((unsigned<8>)((signed)Imm6))));
+			}
 		}
 	}
 	CV_CMPLE_H {
 		encoding: 5'b00101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((signed)X[rs1][15: 0] <= (signed)X[rs2][15: 0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((signed)X[rs1][31:16] <= (signed)X[rs2][31:16]));
+			}
 		}
 	}
 	CV_CMPLE_SC_H {
 		encoding: 5'b00101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((signed)X[rs1][15: 0] <= (signed)X[rs2][15:0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((signed)X[rs1][31:16] <= (signed)X[rs2][15:0]));
+			}
 		}
 	}
 	CV_CMPLE_SCI_H {
 		encoding: 5'b00101 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((signed)X[rs1][15: 0] <= (signed)((unsigned<16>)((signed)Imm6))));
+				X[rd][31:16] = (unsigned<16>)((signed)((signed)X[rs1][31:16] <= (signed)((unsigned<16>)((signed)Imm6))));
+			}
 		}
 	}
 	CV_CMPLE_B {
 		encoding: 5'b00101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((signed)X[rs1][ 7: 0] <= (signed)X[rs2][ 7: 0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((signed)X[rs1][15: 8] <= (signed)X[rs2][15: 8]));
+				X[rd][23:16] = (unsigned<8>)((signed)((signed)X[rs1][23:16] <= (signed)X[rs2][23:16]));
+				X[rd][31:24] = (unsigned<8>)((signed)((signed)X[rs1][31:24] <= (signed)X[rs2][31:24]));
+			}
 		}
 	}
 	CV_CMPLE_SC_B {
 		encoding: 5'b00101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((signed)X[rs1][ 7: 0] <= (signed)X[rs2][7:0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((signed)X[rs1][15: 8] <= (signed)X[rs2][7:0]));
+				X[rd][23:16] = (unsigned<8>)((signed)((signed)X[rs1][23:16] <= (signed)X[rs2][7:0]));
+				X[rd][31:24] = (unsigned<8>)((signed)((signed)X[rs1][31:24] <= (signed)X[rs2][7:0]));
+			}
 		}
 	}
 	CV_CMPLE_SCI_B {
 		encoding: 5'b00101 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((signed)X[rs1][ 7: 0] <= (signed)((unsigned<8>)((signed)Imm6))));
+				X[rd][15: 8] = (unsigned<8>)((signed)((signed)X[rs1][15: 8] <= (signed)((unsigned<8>)((signed)Imm6))));
+				X[rd][23:16] = (unsigned<8>)((signed)((signed)X[rs1][23:16] <= (signed)((unsigned<8>)((signed)Imm6))));
+				X[rd][31:24] = (unsigned<8>)((signed)((signed)X[rs1][31:24] <= (signed)((unsigned<8>)((signed)Imm6))));
+			}
 		}
 	}
 	CV_CMPGTU_H {
 		encoding: 5'b00110 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((unsigned)X[rs1][15: 0] > (unsigned)X[rs2][15: 0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((unsigned)X[rs1][31:16] > (unsigned)X[rs2][31:16]));
+			}
 		}
 	}
 	CV_CMPGTU_SC_H {
 		encoding: 5'b00110 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((unsigned)X[rs1][15: 0] > (unsigned)X[rs2][15:0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((unsigned)X[rs1][31:16] > (unsigned)X[rs2][15:0]));
+			}
 		}
 	}
 	CV_CMPGTU_SCI_H {
 		encoding: 5'b00110 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((unsigned)X[rs1][15: 0] > (unsigned)((unsigned<16>)Imm6)));
+				X[rd][31:16] = (unsigned<16>)((signed)((unsigned)X[rs1][31:16] > (unsigned)((unsigned<16>)Imm6)));
+			}
 		}
 	}
 	CV_CMPGTU_B {
 		encoding: 5'b00110 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((unsigned)X[rs1][ 7: 0] > (unsigned)X[rs2][ 7: 0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((unsigned)X[rs1][15: 8] > (unsigned)X[rs2][15: 8]));
+				X[rd][23:16] = (unsigned<8>)((signed)((unsigned)X[rs1][23:16] > (unsigned)X[rs2][23:16]));
+				X[rd][31:24] = (unsigned<8>)((signed)((unsigned)X[rs1][31:24] > (unsigned)X[rs2][31:24]));
+			}
 		}
 	}
 	CV_CMPGTU_SC_B {
 		encoding: 5'b00110 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((unsigned)X[rs1][ 7: 0] > (unsigned)X[rs2][7:0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((unsigned)X[rs1][15: 8] > (unsigned)X[rs2][7:0]));
+				X[rd][23:16] = (unsigned<8>)((signed)((unsigned)X[rs1][23:16] > (unsigned)X[rs2][7:0]));
+				X[rd][31:24] = (unsigned<8>)((signed)((unsigned)X[rs1][31:24] > (unsigned)X[rs2][7:0]));
+			}
 		}
 	}
 	CV_CMPGTU_SCI_B {
 		encoding: 5'b00110 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((unsigned)X[rs1][ 7: 0] > (unsigned)((unsigned<8>)Imm6)));
+				X[rd][15: 8] = (unsigned<8>)((signed)((unsigned)X[rs1][15: 8] > (unsigned)((unsigned<8>)Imm6)));
+				X[rd][23:16] = (unsigned<8>)((signed)((unsigned)X[rs1][23:16] > (unsigned)((unsigned<8>)Imm6)));
+				X[rd][31:24] = (unsigned<8>)((signed)((unsigned)X[rs1][31:24] > (unsigned)((unsigned<8>)Imm6)));
+			}
 		}
 	}
 	CV_CMPGEU_H {
 		encoding: 5'b00111 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((unsigned)X[rs1][15: 0] >= (unsigned)X[rs2][15: 0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((unsigned)X[rs1][31:16] >= (unsigned)X[rs2][31:16]));
+			}
 		}
 	}
 	CV_CMPGEU_SC_H {
 		encoding: 5'b00111 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((unsigned)X[rs1][15: 0] >= (unsigned)X[rs2][15:0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((unsigned)X[rs1][31:16] >= (unsigned)X[rs2][15:0]));
+			}
 		}
 	}
 	CV_CMPGEU_SCI_H {
 		encoding: 5'b00111 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((unsigned)X[rs1][15: 0] >= (unsigned)((unsigned<16>)Imm6)));
+				X[rd][31:16] = (unsigned<16>)((signed)((unsigned)X[rs1][31:16] >= (unsigned)((unsigned<16>)Imm6)));
+			}
 		}
 	}
 	CV_CMPGEU_B {
 		encoding: 5'b00111 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((unsigned)X[rs1][ 7: 0] >= (unsigned)X[rs2][ 7: 0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((unsigned)X[rs1][15: 8] >= (unsigned)X[rs2][15: 8]));
+				X[rd][23:16] = (unsigned<8>)((signed)((unsigned)X[rs1][23:16] >= (unsigned)X[rs2][23:16]));
+				X[rd][31:24] = (unsigned<8>)((signed)((unsigned)X[rs1][31:24] >= (unsigned)X[rs2][31:24]));
+			}
 		}
 	}
 	CV_CMPGEU_SC_B {
 		encoding: 5'b00111 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((unsigned)X[rs1][ 7: 0] >= (unsigned)X[rs2][7:0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((unsigned)X[rs1][15: 8] >= (unsigned)X[rs2][7:0]));
+				X[rd][23:16] = (unsigned<8>)((signed)((unsigned)X[rs1][23:16] >= (unsigned)X[rs2][7:0]));
+				X[rd][31:24] = (unsigned<8>)((signed)((unsigned)X[rs1][31:24] >= (unsigned)X[rs2][7:0]));
+			}
 		}
 	}
 	CV_CMPGEU_SCI_B {
 		encoding: 5'b00111 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((unsigned)X[rs1][ 7: 0] >= (unsigned)((unsigned<8>)Imm6)));
+				X[rd][15: 8] = (unsigned<8>)((signed)((unsigned)X[rs1][15: 8] >= (unsigned)((unsigned<8>)Imm6)));
+				X[rd][23:16] = (unsigned<8>)((signed)((unsigned)X[rs1][23:16] >= (unsigned)((unsigned<8>)Imm6)));
+				X[rd][31:24] = (unsigned<8>)((signed)((unsigned)X[rs1][31:24] >= (unsigned)((unsigned<8>)Imm6)));
+			}
 		}
 	}
 	CV_CMPLTU_H {
 		encoding: 5'b01000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((unsigned)X[rs1][15: 0] < (unsigned)X[rs2][15: 0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((unsigned)X[rs1][31:16] < (unsigned)X[rs2][31:16]));
+			}
 		}
 	}
 	CV_CMPLTU_SC_H {
 		encoding: 5'b01000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((unsigned)X[rs1][15: 0] < (unsigned)X[rs2][15:0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((unsigned)X[rs1][31:16] < (unsigned)X[rs2][15:0]));
+			}
 		}
 	}
 	CV_CMPLTU_SCI_H {
 		encoding: 5'b01000 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((unsigned)X[rs1][15: 0] < (unsigned)((unsigned<16>)Imm6)));
+				X[rd][31:16] = (unsigned<16>)((signed)((unsigned)X[rs1][31:16] < (unsigned)((unsigned<16>)Imm6)));
+			}
 		}
 	}
 	CV_CMPLTU_B {
 		encoding: 5'b01000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((unsigned)X[rs1][ 7: 0] < (unsigned)X[rs2][ 7: 0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((unsigned)X[rs1][15: 8] < (unsigned)X[rs2][15: 8]));
+				X[rd][23:16] = (unsigned<8>)((signed)((unsigned)X[rs1][23:16] < (unsigned)X[rs2][23:16]));
+				X[rd][31:24] = (unsigned<8>)((signed)((unsigned)X[rs1][31:24] < (unsigned)X[rs2][31:24]));
+			}
 		}
 	}
 	CV_CMPLTU_SC_B {
 		encoding: 5'b01000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((unsigned)X[rs1][ 7: 0] < (unsigned)X[rs2][7:0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((unsigned)X[rs1][15: 8] < (unsigned)X[rs2][7:0]));
+				X[rd][23:16] = (unsigned<8>)((signed)((unsigned)X[rs1][23:16] < (unsigned)X[rs2][7:0]));
+				X[rd][31:24] = (unsigned<8>)((signed)((unsigned)X[rs1][31:24] < (unsigned)X[rs2][7:0]));
+			}
 		}
 	}
 	CV_CMPLTU_SCI_B {
 		encoding: 5'b01000 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((unsigned)X[rs1][ 7: 0] < (unsigned)((unsigned<8>)Imm6)));
+				X[rd][15: 8] = (unsigned<8>)((signed)((unsigned)X[rs1][15: 8] < (unsigned)((unsigned<8>)Imm6)));
+				X[rd][23:16] = (unsigned<8>)((signed)((unsigned)X[rs1][23:16] < (unsigned)((unsigned<8>)Imm6)));
+				X[rd][31:24] = (unsigned<8>)((signed)((unsigned)X[rs1][31:24] < (unsigned)((unsigned<8>)Imm6)));
+			}
 		}
 	}
 	CV_CMPLEU_H {
 		encoding: 5'b01001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((unsigned)X[rs1][15: 0] <= (unsigned)X[rs2][15: 0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((unsigned)X[rs1][31:16] <= (unsigned)X[rs2][31:16]));
+			}
 		}
 	}
 	CV_CMPLEU_SC_H {
 		encoding: 5'b01001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((unsigned)X[rs1][15: 0] <= (unsigned)X[rs2][15:0]));
+				X[rd][31:16] = (unsigned<16>)((signed)((unsigned)X[rs1][31:16] <= (unsigned)X[rs2][15:0]));
+			}
 		}
 	}
 	CV_CMPLEU_SCI_H {
 		encoding: 5'b01001 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = (unsigned<16>)((signed)((unsigned)X[rs1][15: 0] <= (unsigned)((unsigned<16>)Imm6)));
+				X[rd][31:16] = (unsigned<16>)((signed)((unsigned)X[rs1][31:16] <= (unsigned)((unsigned<16>)Imm6)));
+			}
 		}
 	}
 	CV_CMPLEU_B {
 		encoding: 5'b01001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((unsigned)X[rs1][ 7: 0] <= (unsigned)X[rs2][ 7: 0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((unsigned)X[rs1][15: 8] <= (unsigned)X[rs2][15: 8]));
+				X[rd][23:16] = (unsigned<8>)((signed)((unsigned)X[rs1][23:16] <= (unsigned)X[rs2][23:16]));
+				X[rd][31:24] = (unsigned<8>)((signed)((unsigned)X[rs1][31:24] <= (unsigned)X[rs2][31:24]));
+			}
 		}
 	}
 	CV_CMPLEU_SC_B {
 		encoding: 5'b01001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((unsigned)X[rs1][ 7: 0] <= (unsigned)X[rs2][7:0]));
+				X[rd][15: 8] = (unsigned<8>)((signed)((unsigned)X[rs1][15: 8] <= (unsigned)X[rs2][7:0]));
+				X[rd][23:16] = (unsigned<8>)((signed)((unsigned)X[rs1][23:16] <= (unsigned)X[rs2][7:0]));
+				X[rd][31:24] = (unsigned<8>)((signed)((unsigned)X[rs1][31:24] <= (unsigned)X[rs2][7:0]));
+			}
 		}
 	}
 	CV_CMPLEU_SCI_B {
 		encoding: 5'b01001 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][ 7: 0] = (unsigned<8>)((signed)((unsigned)X[rs1][ 7: 0] <= (unsigned)((unsigned<8>)Imm6)));
+				X[rd][15: 8] = (unsigned<8>)((signed)((unsigned)X[rs1][15: 8] <= (unsigned)((unsigned<8>)Imm6)));
+				X[rd][23:16] = (unsigned<8>)((signed)((unsigned)X[rs1][23:16] <= (unsigned)((unsigned<8>)Imm6)));
+				X[rd][31:24] = (unsigned<8>)((signed)((unsigned)X[rs1][31:24] <= (unsigned)((unsigned<8>)Imm6)));
+			}
 		}
 	}
 // SOURCE FILE: instr_srcs/XCoreVSIMD_Complex.txt
@@ -2372,95 +2612,121 @@ CV_ADD_H {
 		encoding: 5'b01101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][31:16] = (X[rs2][15: 0] - X[rs1][31:16])[15:0];
+			}
 		}
 	}
 	CV_SUBROTMJ_DIV2 {
 		encoding: 5'b01101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][31:16] = (signed)((X[rs2][15: 0] - X[rs1][31:16])[15:0]) >> 1;
+			}
 		}
 	}
 	CV_SUBROTMJ_DIV4 {
 		encoding: 5'b01101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][31:16] = (signed)((X[rs2][15: 0] - X[rs1][31:16])[15:0]) >> 2;
+			}
 		}
 	}
 	CV_SUBROTMJ_DIV8 {
 		encoding: 5'b01101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][31:16] = (signed)((X[rs2][15: 0] - X[rs1][31:16])[15:0]) >> 3;
+			}
 		}
 	}
-	// CV_CPLXCONJ {
-	// 	encoding: 5'b01011 :: 1'b1 :: 1'b0 :: xxxxx[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
-	// 	assembly: "{name(rd)}, {name(rs1)}";
-	// 	behavior: {
-	// 		// TODO
-	// 	}
-	// }
+	CV_CPLXCONJ {
+		encoding: 5'b01011 :: 1'b1 :: 1'b0 :: xxxxx[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		assembly: "{name(rd)}, {name(rs1)}";
+		behavior: {
+			if (rd != 0) {
+				X[rd][15: 0] = X[rs1][15: 0];
+				X[rd][31:16] = -X[rs1][31:16];
+			}
+		}
+	}
 	CV_CPLXMUL_R {
 		encoding: 5'b01010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = ((signed)X[rs1][15: 0] * (signed)X[rs2][15: 0] - (signed)X[rs1][31:16] * (signed)X[rs2][31:16]) >> 15;
+			}
 		}
 	}
 	CV_CPLXMUL_R_DIV2 {
 		encoding: 5'b01010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = ((signed)X[rs1][15: 0] * (signed)X[rs2][15: 0] - (signed)X[rs1][31:16] * (signed)X[rs2][31:16]) >> 16;
+			}
 		}
 	}
 	CV_CPLXMUL_R_DIV4 {
 		encoding: 5'b01010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = ((signed)X[rs1][15: 0] * (signed)X[rs2][15: 0] - (signed)X[rs1][31:16] * (signed)X[rs2][31:16]) >> 17;
+			}
 		}
 	}
 	CV_CPLXMUL_R_DIV8 {
 		encoding: 5'b01010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][15: 0] = ((signed)X[rs1][15: 0] * (signed)X[rs2][15: 0] - (signed)X[rs1][31:16] * (signed)X[rs2][31:16]) >> 18;
+			}
 		}
 	}
 	CV_CPLXMUL_I {
 		encoding: 5'b01010 :: 1'b1 :: 1'b1 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][31:16] = ((signed)X[rs1][15: 0] * (signed)X[rs2][31:16] - (signed)X[rs1][31:16] * (signed)X[rs2][15: 0]) >> 15;
+			}
 		}
 	}
 	CV_CPLXMUL_I_DIV2 {
 		encoding: 5'b01010 :: 1'b1 :: 1'b1 :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][31:16] = ((signed)X[rs1][15: 0] * (signed)X[rs2][31:16] - (signed)X[rs1][31:16] * (signed)X[rs2][15: 0]) >> 16;
+			}
 		}
 	}
 	CV_CPLXMUL_I_DIV4 {
 		encoding: 5'b01010 :: 1'b1 :: 1'b1 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][31:16] = ((signed)X[rs1][15: 0] * (signed)X[rs2][31:16] - (signed)X[rs1][31:16] * (signed)X[rs2][15: 0]) >> 17;
+			}
 		}
 	}
 	CV_CPLXMUL_I_DIV8 {
 		encoding: 5'b01010 :: 1'b1 :: 1'b1 :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
-			// TODO
+			if (rd != 0) {
+				X[rd][31:16] = ((signed)X[rs1][15: 0] * (signed)X[rs2][31:16] - (signed)X[rs1][31:16] * (signed)X[rs2][15: 0]) >> 18;
+			}
 		}
 	}
-    }
-
+  }
 }
 
 InstructionSet XCoreVBranchImmediate extends RISCVBase {

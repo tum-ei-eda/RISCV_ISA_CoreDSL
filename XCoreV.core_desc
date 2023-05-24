@@ -2396,13 +2396,13 @@ CV_ADD_H {
 			// TODO
 		}
 	}
-	CV_CPLXCONJ {
-		encoding: 5'b01011 :: 1'b1 :: 1'b0 :: xxxxx[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
-		assembly: "{name(rd)}, {name(rs1)}";
-		behavior: {
-			// TODO
-		}
-	}
+	// CV_CPLXCONJ {
+	// 	encoding: 5'b01011 :: 1'b1 :: 1'b0 :: xxxxx[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+	// 	assembly: "{name(rd)}, {name(rs1)}";
+	// 	behavior: {
+	// 		// TODO
+	// 	}
+	// }
 	CV_CPLXMUL_R {
 		encoding: 5'b01010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";

@@ -222,7 +222,6 @@ InstructionSet XCoreVMem extends RISCVBase {
             encoding: 7'b0010110 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rs3[4:0] :: 7'b0101011;
             assembly:"{name(rs2)}, {name(rs3)}({name(rs1)})";
             behavior: {
-                signed<32> result = 0;
                 unsigned<XLEN> store_address = X[rs1] + X[rs3];  // TODO: signed?
 								MEM[store_address] = (signed<32>)X[rs2];
             }

@@ -453,6 +453,22 @@ InstructionSet XCoreVAlu extends RISCVBase {
                 X[rd] = (unsigned)X[rs1] < (unsigned)X[rs2] ? X[rs1] : X[rs2];  // unsigned
             }
         }
+        CV_ADDN {
+            encoding: 2'b00 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1011011;
+            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
+            behavior: {
+              // unsigned<32> result = ((unsigned)X[rs1][15:0] + (unsigned)X[rs2][15:0]) >> Is3;
+              // if(rd != 0) X[rd] = result[31:0];
+            }
+        }
+        CV_ADDUN {
+            encoding: 2'b01 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1011011;
+            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
+            behavior: {
+              // unsigned<32> result = ((unsigned)X[rs1][15:0] + (unsigned)X[rs2][15:0]) >> Is3;
+              // if(rd != 0) X[rd] = result[31:0];
+            }
+        }
     }
 }
 

@@ -499,7 +499,7 @@ InstructionSet XCoreVBitmanip extends RISCVBase {
 InstructionSet XCoreVSimd extends RISCVBase {
     instructions {
 	CV_ADD_H {
-		encoding: 5'b00000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -509,7 +509,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_ADD_SC_H {
-		encoding: 5'b00000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -519,7 +519,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_ADD_SCI_H {
-		encoding: 5'b00000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -529,7 +529,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_ADD_B {
-		encoding: 5'b00000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -541,7 +541,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_ADD_SC_B {
-		encoding: 5'b00000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -553,7 +553,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_ADD_SCI_B {
-		encoding: 5'b00000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -565,7 +565,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_ADD_DIV2 {
-		encoding: 5'b01011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -575,7 +575,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_ADD_DIV4 {
-		encoding: 5'b01011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -585,7 +585,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_ADD_DIV8 {
-		encoding: 5'b01011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -595,7 +595,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SUB_H {
-		encoding: 5'b00001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -605,7 +605,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SUB_SC_H {
-		encoding: 5'b00001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -615,7 +615,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SUB_SCI_H {
-		encoding: 5'b00001 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00001 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -625,7 +625,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SUB_B {
-		encoding: 5'b00001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -637,7 +637,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SUB_SC_B {
-		encoding: 5'b00001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -649,7 +649,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SUB_SCI_B {
-		encoding: 5'b00001 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00001 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -661,7 +661,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SUB_DIV2 {
-		encoding: 5'b01100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -671,7 +671,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SUB_DIV4 {
-		encoding: 5'b01100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -681,7 +681,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SUB_DIV8 {
-		encoding: 5'b01100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -691,7 +691,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AVG_H {
-		encoding: 5'b00010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -701,7 +701,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AVG_SC_H {
-		encoding: 5'b00010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -711,7 +711,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AVG_SCI_H {
-		encoding: 5'b00010 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00010 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -721,7 +721,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AVG_B {
-		encoding: 5'b00010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -733,7 +733,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AVG_SC_B {
-		encoding: 5'b00010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -745,7 +745,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AVG_SCI_B {
-		encoding: 5'b00010 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00010 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -757,7 +757,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AVGU_H {
-		encoding: 5'b00011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -767,7 +767,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AVGU_SC_H {
-		encoding: 5'b00011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -777,7 +777,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AVGU_SCI_H {
-		encoding: 5'b00011 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00011 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -787,7 +787,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AVGU_B {
-		encoding: 5'b00011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -799,7 +799,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AVGU_SC_B {
-		encoding: 5'b00011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -811,7 +811,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AVGU_SCI_B {
-		encoding: 5'b00011 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00011 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -823,175 +823,175 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_MIN_H {
-		encoding: 5'b00100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MIN_SC_H {
-		encoding: 5'b00100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MIN_SCI_H {
-		encoding: 5'b00100 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00100 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MIN_B {
-		encoding: 5'b00100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MIN_SC_B {
-		encoding: 5'b00100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MIN_SCI_B {
-		encoding: 5'b00100 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00100 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MINU_H {
-		encoding: 5'b00101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MINU_SC_H {
-		encoding: 5'b00101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MINU_SCI_H {
-		encoding: 5'b00101 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00101 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MINU_B {
-		encoding: 5'b00101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MINU_SC_B {
-		encoding: 5'b00101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MINU_SCI_B {
-		encoding: 5'b00101 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00101 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MAX_H {
-		encoding: 5'b00110 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00110 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MAX_SC_H {
-		encoding: 5'b00110 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00110 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MAX_SCI_H {
-		encoding: 5'b00110 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00110 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MAX_B {
-		encoding: 5'b00110 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00110 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MAX_SC_B {
-		encoding: 5'b00110 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00110 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MAX_SCI_B {
-		encoding: 5'b00110 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00110 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MAXU_H {
-		encoding: 5'b00111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MAXU_SC_H {
-		encoding: 5'b00111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MAXU_SCI_H {
-		encoding: 5'b00111 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00111 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MAXU_B {
-		encoding: 5'b00111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MAXU_SC_B {
-		encoding: 5'b00111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_MAXU_SCI_B {
-		encoding: 5'b00111 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00111 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_SRL_H {
-		encoding: 5'b01000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1001,7 +1001,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SRL_SC_H {
-		encoding: 5'b01000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1011,7 +1011,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SRL_SCI_H {
-		encoding: 5'b01000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1021,7 +1021,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SRL_B {
-		encoding: 5'b01000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1033,7 +1033,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SRL_SC_B {
-		encoding: 5'b01000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1045,7 +1045,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SRL_SCI_B {
-		encoding: 5'b01000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1057,7 +1057,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SRA_H {
-		encoding: 5'b01001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1067,7 +1067,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SRA_SC_H {
-		encoding: 5'b01001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1077,7 +1077,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SRA_SCI_H {
-		encoding: 5'b01001 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01001 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1087,7 +1087,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SRA_B {
-		encoding: 5'b01001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1099,7 +1099,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SRA_SC_B {
-		encoding: 5'b01001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1111,7 +1111,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SRA_SCI_B {
-		encoding: 5'b01001 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01001 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1123,7 +1123,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SLL_H {
-		encoding: 5'b01010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1133,7 +1133,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SLL_SC_H {
-		encoding: 5'b01010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1143,7 +1143,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SLL_SCI_H {
-		encoding: 5'b01010 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01010 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1153,7 +1153,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SLL_B {
-		encoding: 5'b01010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1165,7 +1165,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SLL_SC_B {
-		encoding: 5'b01010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1177,7 +1177,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SLL_SCI_B {
-		encoding: 5'b01010 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01010 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1189,7 +1189,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_OR_H {
-		encoding: 5'b01011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1199,7 +1199,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_OR_SC_H {
-		encoding: 5'b01011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1209,7 +1209,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_OR_SCI_H {
-		encoding: 5'b01011 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01011 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1219,7 +1219,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_OR_B {
-		encoding: 5'b01011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1231,7 +1231,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_OR_SC_B {
-		encoding: 5'b01011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1243,7 +1243,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_OR_SCI_B {
-		encoding: 5'b01011 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01011 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1255,7 +1255,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_XOR_H {
-		encoding: 5'b01100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1265,7 +1265,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_XOR_SC_H {
-		encoding: 5'b01100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1275,7 +1275,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_XOR_SCI_H {
-		encoding: 5'b01100 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01100 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1285,7 +1285,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_XOR_B {
-		encoding: 5'b01100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1297,7 +1297,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_XOR_SC_B {
-		encoding: 5'b01100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1309,7 +1309,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_XOR_SCI_B {
-		encoding: 5'b01100 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01100 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1321,7 +1321,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AND_H {
-		encoding: 5'b01101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1331,7 +1331,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AND_SC_H {
-		encoding: 5'b01101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1341,7 +1341,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AND_SCI_H {
-		encoding: 5'b01101 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01101 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1351,7 +1351,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AND_B {
-		encoding: 5'b01101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1363,7 +1363,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AND_SC_B {
-		encoding: 5'b01101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1375,7 +1375,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_AND_SCI_B {
-		encoding: 5'b01101 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01101 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1387,21 +1387,21 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_ABS_H {
-		encoding: 5'b01110 :: 1'b0 :: 1'b0 :: 5'b00000 :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01110 :: 1'b0 :: 1'b0 :: 5'b00000 :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_ABS_B {
-		encoding: 5'b01110 :: 1'b0 :: 1'b0 :: 5'b00000 :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01110 :: 1'b0 :: 1'b0 :: 5'b00000 :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}";
 		behavior: {
 			// TODO
 		}
 	}
 	CV_EXTRACT_H {
-		encoding: 5'b01111 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01111 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1410,7 +1410,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_EXTRACT_B {
-		encoding: 5'b01111 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01111 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1419,7 +1419,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_EXTRACTU_H {
-		encoding: 5'b10010 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10010 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1428,7 +1428,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_EXTRACTU_B {
-		encoding: 5'b10010 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10010 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1437,7 +1437,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_INSERT_H {
-		encoding: 5'b10110 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10110 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1446,7 +1446,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_INSERT_B {
-		encoding: 5'b10110 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10110 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1455,7 +1455,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTUP_H {
-		encoding: 5'b10000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1464,7 +1464,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTUP_SC_H {
-		encoding: 5'b10000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1473,7 +1473,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTUP_SCI_H {
-		encoding: 5'b10000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1482,7 +1482,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTUP_B {
-		encoding: 5'b10000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1493,7 +1493,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTUP_SC_B {
-		encoding: 5'b10000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1504,7 +1504,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTUP_SCI_B {
-		encoding: 5'b10000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1515,7 +1515,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTUSP_H {
-		encoding: 5'b10001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1524,7 +1524,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTUSP_SC_H {
-		encoding: 5'b10001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1533,7 +1533,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTUSP_SCI_H {
-		encoding: 5'b10001 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10001 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1542,7 +1542,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTUSP_B {
-		encoding: 5'b10001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1553,7 +1553,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTUSP_SC_B {
-		encoding: 5'b10001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1564,7 +1564,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTUSP_SCI_B {
-		encoding: 5'b10001 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10001 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1575,7 +1575,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTSP_H {
-		encoding: 5'b10011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((signed)(
@@ -1584,7 +1584,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTSP_SC_H {
-		encoding: 5'b10011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((signed)(
@@ -1593,7 +1593,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTSP_SCI_H {
-		encoding: 5'b10011 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10011 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((signed)(
@@ -1602,7 +1602,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTSP_B {
-		encoding: 5'b10011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((signed)(
@@ -1613,7 +1613,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTSP_SC_B {
-		encoding: 5'b10011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((signed)(
@@ -1624,7 +1624,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_DOTSP_SCI_B {
-		encoding: 5'b10011 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10011 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((signed)(
@@ -1635,7 +1635,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTUP_H {
-		encoding: 5'b10100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1645,7 +1645,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTUP_SC_H {
-		encoding: 5'b10100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1655,7 +1655,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTUP_SCI_H {
-		encoding: 5'b10100 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10100 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1665,7 +1665,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTUP_B {
-		encoding: 5'b10100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1677,7 +1677,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTUP_SC_B {
-		encoding: 5'b10100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1689,7 +1689,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTUP_SCI_B {
-		encoding: 5'b10100 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10100 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1701,7 +1701,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTUSP_H {
-		encoding: 5'b10101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1711,7 +1711,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTUSP_SC_H {
-		encoding: 5'b10101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1721,7 +1721,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTUSP_SCI_H {
-		encoding: 5'b10101 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10101 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1731,7 +1731,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTUSP_B {
-		encoding: 5'b10101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1743,7 +1743,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTUSP_SC_B {
-		encoding: 5'b10101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10101 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1755,7 +1755,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTUSP_SCI_B {
-		encoding: 5'b10101 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10101 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((
@@ -1767,7 +1767,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTSP_H {
-		encoding: 5'b10111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((signed)(
@@ -1777,7 +1777,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTSP_SC_H {
-		encoding: 5'b10111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((signed)(
@@ -1787,7 +1787,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTSP_SCI_H {
-		encoding: 5'b10111 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10111 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((signed)(
@@ -1797,7 +1797,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTSP_B {
-		encoding: 5'b10111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((signed)(
@@ -1809,7 +1809,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTSP_SC_B {
-		encoding: 5'b10111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10111 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((signed)(
@@ -1821,7 +1821,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SDOTSP_SCI_B {
-		encoding: 5'b10111 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b10111 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) X[rd] = (unsigned<32>)((signed)(
@@ -1833,7 +1833,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SHUFFLE_H {
-		encoding: 5'b11000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b11000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1843,7 +1843,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SHUFFLE_SCI_H {
-		encoding: 5'b11000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b11000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1853,7 +1853,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SHUFFLE_B {
-		encoding: 5'b11000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b11000 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1865,7 +1865,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SHUFFLEI0_SCI_B {
-		encoding: 5'b11000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b11000 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1877,7 +1877,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SHUFFLEI1_SCI_B {
-		encoding: 5'b11101 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b11101 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1889,7 +1889,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SHUFFLEI2_SCI_B {
-		encoding: 5'b11110 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b11110 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1901,7 +1901,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SHUFFLEI3_SCI_B {
-		encoding: 5'b11111 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b11111 :: 1'b0 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -1913,7 +1913,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SHUFFLE2_H {
-		encoding: 5'b11001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b11001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1923,7 +1923,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SHUFFLE2_B {
-		encoding: 5'b11001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b11001 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1935,7 +1935,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_PACK {
-		encoding: 5'b11010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b11010 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1945,7 +1945,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_PACK_H {
-		encoding: 5'b11010 :: 1'b0 :: 1'b1 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b11010 :: 1'b0 :: 1'b1 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1955,7 +1955,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_PACKHI_B {
-		encoding: 5'b11011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b11011 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1965,7 +1965,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_PACKLO_B {
-		encoding: 5'b11100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b11100 :: 1'b0 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1976,7 +1976,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 	}
 // SOURCE FILE: instr_srcs/XCoreVSIMD_Comparison.txt
 	CV_CMPEQ_H {
-		encoding: 5'b00000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1986,7 +1986,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPEQ_SC_H {
-		encoding: 5'b00000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -1996,7 +1996,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPEQ_SCI_H {
-		encoding: 5'b00000 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00000 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2006,7 +2006,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPEQ_B {
-		encoding: 5'b00000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2018,7 +2018,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPEQ_SC_B {
-		encoding: 5'b00000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2030,7 +2030,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPEQ_SCI_B {
-		encoding: 5'b00000 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00000 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2042,7 +2042,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPNE_H {
-		encoding: 5'b00001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2052,7 +2052,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPNE_SC_H {
-		encoding: 5'b00001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2062,7 +2062,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPNE_SCI_H {
-		encoding: 5'b00001 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00001 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2072,7 +2072,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPNE_B {
-		encoding: 5'b00001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2084,7 +2084,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPNE_SC_B {
-		encoding: 5'b00001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2096,7 +2096,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPNE_SCI_B {
-		encoding: 5'b00001 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00001 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2108,7 +2108,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGT_H {
-		encoding: 5'b00010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2118,7 +2118,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGT_SC_H {
-		encoding: 5'b00010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2128,7 +2128,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGT_SCI_H {
-		encoding: 5'b00010 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00010 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2138,7 +2138,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGT_B {
-		encoding: 5'b00010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2150,7 +2150,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGT_SC_B {
-		encoding: 5'b00010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2162,7 +2162,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGT_SCI_B {
-		encoding: 5'b00010 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00010 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2174,7 +2174,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGE_H {
-		encoding: 5'b00011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2184,7 +2184,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGE_SC_H {
-		encoding: 5'b00011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2194,7 +2194,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGE_SCI_H {
-		encoding: 5'b00011 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00011 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2204,7 +2204,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGE_B {
-		encoding: 5'b00011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2216,7 +2216,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGE_SC_B {
-		encoding: 5'b00011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00011 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2228,7 +2228,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGE_SCI_B {
-		encoding: 5'b00011 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00011 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2240,7 +2240,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLT_H {
-		encoding: 5'b00100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2250,7 +2250,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLT_SC_H {
-		encoding: 5'b00100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2260,7 +2260,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLT_SCI_H {
-		encoding: 5'b00100 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00100 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2270,7 +2270,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLT_B {
-		encoding: 5'b00100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2282,7 +2282,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLT_SC_B {
-		encoding: 5'b00100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00100 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2294,7 +2294,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLT_SCI_B {
-		encoding: 5'b00100 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00100 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2306,7 +2306,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLE_H {
-		encoding: 5'b00101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2316,7 +2316,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLE_SC_H {
-		encoding: 5'b00101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2326,7 +2326,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLE_SCI_H {
-		encoding: 5'b00101 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00101 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2336,7 +2336,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLE_B {
-		encoding: 5'b00101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2348,7 +2348,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLE_SC_B {
-		encoding: 5'b00101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2360,7 +2360,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLE_SCI_B {
-		encoding: 5'b00101 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00101 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2372,7 +2372,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGTU_H {
-		encoding: 5'b00110 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00110 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2382,7 +2382,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGTU_SC_H {
-		encoding: 5'b00110 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00110 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2392,7 +2392,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGTU_SCI_H {
-		encoding: 5'b00110 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00110 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2402,7 +2402,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGTU_B {
-		encoding: 5'b00110 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00110 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2414,7 +2414,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGTU_SC_B {
-		encoding: 5'b00110 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00110 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2426,7 +2426,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGTU_SCI_B {
-		encoding: 5'b00110 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00110 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2438,7 +2438,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGEU_H {
-		encoding: 5'b00111 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00111 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2448,7 +2448,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGEU_SC_H {
-		encoding: 5'b00111 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00111 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2458,7 +2458,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGEU_SCI_H {
-		encoding: 5'b00111 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00111 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2468,7 +2468,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGEU_B {
-		encoding: 5'b00111 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00111 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2480,7 +2480,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGEU_SC_B {
-		encoding: 5'b00111 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00111 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2492,7 +2492,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPGEU_SCI_B {
-		encoding: 5'b00111 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b00111 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2504,7 +2504,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLTU_H {
-		encoding: 5'b01000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2514,7 +2514,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLTU_SC_H {
-		encoding: 5'b01000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2524,7 +2524,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLTU_SCI_H {
-		encoding: 5'b01000 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01000 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2534,7 +2534,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLTU_B {
-		encoding: 5'b01000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2546,7 +2546,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLTU_SC_B {
-		encoding: 5'b01000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01000 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2558,7 +2558,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLTU_SCI_B {
-		encoding: 5'b01000 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01000 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2570,7 +2570,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLEU_H {
-		encoding: 5'b01001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2580,7 +2580,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLEU_SC_H {
-		encoding: 5'b01001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2590,7 +2590,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLEU_SCI_H {
-		encoding: 5'b01001 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01001 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2600,7 +2600,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLEU_B {
-		encoding: 5'b01001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2612,7 +2612,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLEU_SC_B {
-		encoding: 5'b01001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01001 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2624,7 +2624,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CMPLEU_SCI_B {
-		encoding: 5'b01001 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01001 :: 1'b1 :: Imm6[0:0] :: Imm6[5:1] :: rs1[4:0] :: 3'b111 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {Imm6}";
 		behavior: {
 			if (rd != 0) {
@@ -2637,7 +2637,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 	}
 // SOURCE FILE: instr_srcs/XCoreVSIMD_Complex.txt
 	CV_SUBROTMJ {
-		encoding: 5'b01101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2646,7 +2646,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SUBROTMJ_DIV2 {
-		encoding: 5'b01101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2655,7 +2655,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SUBROTMJ_DIV4 {
-		encoding: 5'b01101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2664,7 +2664,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_SUBROTMJ_DIV8 {
-		encoding: 5'b01101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01101 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2673,7 +2673,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CPLXCONJ {
-		encoding: 5'b01011 :: 1'b1 :: 1'b0 :: 5'b00000 :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01011 :: 1'b1 :: 1'b0 :: 5'b00000 :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}";
 		behavior: {
 			if (rd != 0) {
@@ -2683,7 +2683,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CPLXMUL_R {
-		encoding: 5'b01010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2692,7 +2692,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CPLXMUL_R_DIV2 {
-		encoding: 5'b01010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2701,7 +2701,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CPLXMUL_R_DIV4 {
-		encoding: 5'b01010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2710,7 +2710,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CPLXMUL_R_DIV8 {
-		encoding: 5'b01010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01010 :: 1'b1 :: 1'b0 :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2719,7 +2719,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CPLXMUL_I {
-		encoding: 5'b01010 :: 1'b1 :: 1'b1 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01010 :: 1'b1 :: 1'b1 :: rs2[4:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2728,7 +2728,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CPLXMUL_I_DIV2 {
-		encoding: 5'b01010 :: 1'b1 :: 1'b1 :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01010 :: 1'b1 :: 1'b1 :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2737,7 +2737,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CPLXMUL_I_DIV4 {
-		encoding: 5'b01010 :: 1'b1 :: 1'b1 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01010 :: 1'b1 :: 1'b1 :: rs2[4:0] :: rs1[4:0] :: 3'b100 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {
@@ -2746,7 +2746,7 @@ InstructionSet XCoreVSimd extends RISCVBase {
 		}
 	}
 	CV_CPLXMUL_I_DIV8 {
-		encoding: 5'b01010 :: 1'b1 :: 1'b1 :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1010111;
+		encoding: 5'b01010 :: 1'b1 :: 1'b1 :: rs2[4:0] :: rs1[4:0] :: 3'b110 :: rd[4:0] :: 7'b1111011;
 		assembly: "{name(rd)}, {name(rs1)}, {name(rs2)}";
 		behavior: {
 			if (rd != 0) {

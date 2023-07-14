@@ -426,59 +426,171 @@ InstructionSet XCoreVMac extends RISCVBase {
 InstructionSet XCoreVAlu extends RISCVBase {
     instructions {
         CV_MAX {
-            encoding: 0b0101101 :: rs2[4:0] :: rs1[4:0] :: 0b011 :: rd[4:0] :: 0b0101011; // TODO
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
+            encoding: 7'b0101101 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011; // TODO
+            assembly:{"cv.max", "{name(rd)}, {name(rs1)}, {name(rs2)}"};
             behavior: {
                 X[rd] = (signed)X[rs1] > (signed)X[rs2] ? X[rs1] : X[rs2];  // signed
             }
         }
         CV_MAXU {
-            encoding: 0b0101110 :: rs2[4:0] :: rs1[4:0] :: 0b011 :: rd[4:0] :: 0b0101011; // TODO
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
+            encoding: 7'b0101110 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011; // TODO
+            assembly:{"cv.maxu", "{name(rd)}, {name(rs1)}, {name(rs2)}"};
             behavior: {
                 X[rd] = (unsigned)X[rs1] > (unsigned)X[rs2] ? X[rs1] : X[rs2];  // unsigned
             }
         }
         CV_MIN {
-            encoding: 0b0101011 :: rs2[4:0] :: rs1[4:0] :: 0b011 :: rd[4:0] :: 0b0101011; // TODO
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
+            encoding: 7'b0101011 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011; // TODO
+            assembly:{"cv.min", "{name(rd)}, {name(rs1)}, {name(rs2)}"};
             behavior: {
                 X[rd] = (signed)X[rs1] < (signed)X[rs2] ? X[rs1] : X[rs2];  // signed
             }
         }
         CV_MINU {
-            encoding: 0b0101100 :: rs2[4:0] :: rs1[4:0] :: 0b011 :: rd[4:0] :: 0b0101011; // TODO
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
+            encoding: 7'b0101100 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011; // TODO
+            assembly:{"cv.minu", "{name(rd)}, {name(rs1)}, {name(rs2)}"};
             behavior: {
                 X[rd] = (unsigned)X[rs1] < (unsigned)X[rs2] ? X[rs1] : X[rs2];  // unsigned
             }
         }
-        CV_EXTBZ {
-            encoding: 0b0110011 :: 5'b00000 :: rs1[4:0] :: 0b011 :: rd[4:0] :: 0b0101011; // TODO
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";  // TODO
+        CV_ABS {
+            encoding: 7'b0101000 :: 5'b00000 :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:{"cv.abs", "{name(rd)}, {name(rs1)}"};
             behavior: {
-            }
-        }
-        CV_CLIPU {
-            encoding: 7'b0111001 :: Iuimm5[4:0] :: rs1[4:0] :: 0b011 :: rd[4:0] :: 0b0101011; // TODO
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";  // TODO
-            behavior: {
+                X[rd] = (signed)X[rs1] < 0 ? -1 * X[rs1] : X[rs1];  // unsigned
             }
         }
         CV_ADDN {
             encoding: 2'b00 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1011011;
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
+            assembly:{"cv.addn", "{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}"};
             behavior: {
-              // unsigned<32> result = ((unsigned)X[rs1][15:0] + (unsigned)X[rs2][15:0]) >> Is3;
-              // if(rd != 0) X[rd] = result[31:0];
+              X[rd] = ((signed)(X[rs1] + X[rs2])) >> Is3;
             }
+        }
+        CV_ADDNR {
+            encoding: 7'b1000000 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:{"cv.addnr", "{name(rd)}, {name(rs1)}, {name(rs2)}"};
+            behavior: {
+               X[rd] = ((signed)(X[rd] + X[rs1])) >> (unsigned)X[rs2][4:0];
+            }	
+        }
+        CV_ADDRN {
+            encoding: 2'b10 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1011011;
+            assembly:{"cv.addrn", "{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}"};
+            behavior: {
+               X[rd] = ((signed)(X[rs1] + X[rs2] + 2^(Is3 - 1))) >> Is3;
+            }	
         }
         CV_ADDUN {
             encoding: 2'b01 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1011011;
-            assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}";
+            assembly:{"cv.addun", "{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}"};
             behavior: {
-              // unsigned<32> result = ((unsigned)X[rs1][15:0] + (unsigned)X[rs2][15:0]) >> Is3;
-              // if(rd != 0) X[rd] = result[31:0];
+               X[rd] = (unsigned)(X[rs1] + X[rs2]) >> Is3;
+            }
+        }
+        CV_ADDUNR {
+            encoding: 7'b1000001 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:{"cv.addunr", "{name(rd)}, {name(rs1)}, {name(rs2)}"};
+            behavior: {
+               X[rd] = (unsigned)(X[rd] + X[rs1]) >> X[rs2][4:0];
+            }
+        }
+        CV_ADDURN {
+            encoding: 2'b11 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1011011;
+            assembly:{"cv.addurn", "{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}"};
+            behavior: {
+               X[rd] = (unsigned)(X[rs1] + X[rs2] + 2^(Is3 - 1)) >> Is3;
+            }
+        }
+        CV_CLIP {
+            encoding: 7'b0111000 :: Is2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:{"cv.clip", "{name(rd)}, {name(rs1)}, {Is2}"};
+            behavior: {
+                X[rd] = X[rs1]<= (-2)^(Is2 - 1) ? (-2)^(Is2 - 1) : (rs1 >= (2)^(Is2 - 1) ? (2)^(Is2 - 1) : X[rs1]);               
+            }
+        }
+        CV_CLIPU {
+            encoding: 7'b0111001 :: Is2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:{"cv.clipu", "{name(rd)}, {name(rs1)}, {Is2}"};
+            behavior: {
+               X[rd] = X[rs1]<= 0 ? 0 : (X[rs1] >= (2)^(Is2 - 1) ? (2)^(Is2 - 1) : X[rs1]);
+            }
+        }       
+        CV_CLIPUR {
+            encoding: 7'b0111010 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:{"cv.clipur", "{name(rd)}, {name(rs1)}, {name(rs2)}"};
+            behavior: {
+               X[rd] = X[rs1]<= 0 ? 0 : (X[rs1] >= X[rs2] ? X[rs2] : X[rs1]);  
+            }
+        }
+        CV_EXTBS {
+            encoding: 7'b0110010 :: 5'b00000 :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:{"cv.extbs", "{name(rd)}, {name(rs1)}"};
+            behavior: {
+               X[rd] = (signed)X[rs1][7:0];  
+            }
+        }
+        CV_EXTBZ {
+            encoding: 7'b0110011 :: 5'b00000 :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:{"cv.extbz", "{name(rd)}, {name(rs1)}"};
+            behavior: {
+               X[rd] = (unsigned)X[rs1][7:0];  
+            }
+        }
+        CV_EXTHS {
+            encoding: 7'b0110000 :: 5'b00000 :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:{"cv.exths", "{name(rd)}, {name(rs1)}"};
+            behavior: {
+               X[rd] = (signed)X[rs1][15:0];  
+            }
+        }
+        CV_EXTHZ {
+            encoding: 7'b0110001 :: 5'b00000 :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:{"cv.exthz", "{name(rd)}, {name(rs1)}"};
+            behavior: {
+               X[rd] = (unsigned)X[rs1][15:0];  
+            }
+        }
+        CV_SLET {
+            encoding: 7'b0101001 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:{"cv.slet", "{name(rd)}, {name(rs1)}, {name(rs2)}"};
+            behavior: {
+               X[rd] = (signed) X[rs1] <= (signed) X[rs2] ? 1 : 0;  
+            }
+        }
+        CV_SLETU {
+            encoding: 7'b0101010 :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0101011;
+            assembly:{"cv.sletu", "{name(rd)}, {name(rs1)}, {name(rs2)}"};
+            behavior: {
+               X[rd] = (unsigned) X[rs1] <= (unsigned) X[rs2] ? 1 : 0;  
+            }
+        }
+        CV_SUBN {
+	    encoding: 2'b00 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b1011011;
+            assembly:{"cv.subn", "{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}"};
+            behavior: {
+              X[rd] = ((signed)(X[rs1] - X[rs2])) >> Is3;
+            }
+        }
+        CV_SUBRN {
+            encoding: 2'b10 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b1011011;
+            assembly:{"cv.subrn", "{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}"};
+            behavior: {
+	       X[rd] = ((signed)(X[rs1] - X[rs2] + 2^(Is3 - 1))) >> Is3;
+            }
+        }
+        CV_SUBUN {
+            encoding: 2'b01 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b1011011;
+            assembly:{"cv.subun", "{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}"};
+            behavior: {
+              X[rd] = (unsigned)(X[rs1] - X[rs2]) >> Is3;
+            }
+        }        
+        CV_SUBURN {
+            encoding: 2'b11 :: Is3[4:0] :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b1011011;
+            assembly:{"cv.suburn", "{name(rd)}, {name(rs1)}, {name(rs2)}, {Is3}"};
+            behavior: {
+              X[rd] = (unsigned)(X[rs1] - X[rs2] + 2^(Is3 - 1)) >> Is3;
             }
         }
     }

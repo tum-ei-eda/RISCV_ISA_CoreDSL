@@ -51,7 +51,7 @@ InstructionSet RV32D extends RV32F {
             assembly:"{name(rm)}, {name(rd)}, f {rs1}, f {rs2}, f {rs3}";
             behavior: {
                 //F[rd]f = F[rs1]f * F[rs2]f + F[rs3]f;
-                unsigned<64> res = fmadd_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], (unsigned<64>)F[rs3], 0, rm<7? rm: (unsigned char)FCSR);
+                unsigned<64> res = fmadd_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], (unsigned<64>)F[rs3], 0, get_rm(rm));
                 if (FLEN == 64)
                     F[rd] = res;
                 else { // NaN boxing
@@ -67,7 +67,7 @@ InstructionSet RV32D extends RV32F {
             assembly:"{name(rm)}, {name(rd)}, f {rs1}, f {rs2}, f {rs3}";
             behavior: {
                 //F[rd]f = F[rs1]f * F[rs2]f - F[rs3]f;
-                unsigned<64> res = fmadd_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], (unsigned<64>)F[rs3], 1, rm<7? rm: (unsigned char)FCSR);
+                unsigned<64> res = fmadd_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], (unsigned<64>)F[rs3], 1, get_rm(rm));
                 if (FLEN == 64)
                     F[rd] = res;
                 else { // NaN boxing
@@ -83,7 +83,7 @@ InstructionSet RV32D extends RV32F {
             assembly:"{name(rm)}, {name(rd)}, f {rs1}, f {rs2}, f {rs3}";
             behavior: {
                 //F[rd]f = -F[rs1]f * F[rs2]f + F[rs3]f;
-                unsigned<64> res = fmadd_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], (unsigned<64>)F[rs3], 2, rm<7? rm: (unsigned char)FCSR);
+                unsigned<64> res = fmadd_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], (unsigned<64>)F[rs3], 2, get_rm(rm));
                 if (FLEN == 64)
                     F[rd] = res;
                 else { // NaN boxing
@@ -99,7 +99,7 @@ InstructionSet RV32D extends RV32F {
             assembly:"{name(rm)}, {name(rd)}, f {rs1}, f {rs2}, f {rs3}";
             behavior: {
                 //F[rd]f = -F[rs1]f * F[rs2]f - F[rs3]f;
-                unsigned<64> res = fmadd_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], (unsigned<64>)F[rs3], 3, rm<7? rm: (unsigned char)FCSR);
+                unsigned<64> res = fmadd_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], (unsigned<64>)F[rs3], 3, get_rm(rm));
                 if (FLEN == 64)
                     F[rd] = res;
                 else { // NaN boxing
@@ -115,7 +115,7 @@ InstructionSet RV32D extends RV32F {
             assembly:"{name(rm)}, {name(rd)}, f {rs1}, f {rs2}";
             behavior: {
                 // F[rd]f = F[rs1]f + F[rs2]f;
-                unsigned<64> res = fadd_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], rm<7? rm: (unsigned char)FCSR);
+                unsigned<64> res = fadd_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], get_rm(rm));
                 if (FLEN == 64)
                     F[rd] = res;
                 else { // NaN boxing
@@ -131,7 +131,7 @@ InstructionSet RV32D extends RV32F {
             assembly:"{name(rm)}, {name(rd)}, f {rs1}, f {rs2}";
             behavior: {
                 // F[rd]f = F[rs1]f - F[rs2]f;
-                unsigned<64> res = fsub_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], rm<7? rm: (unsigned char)FCSR);
+                unsigned<64> res = fsub_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], get_rm(rm));
                 if (FLEN == 64)
                     F[rd] = res;
                 else { // NaN boxing
@@ -147,7 +147,7 @@ InstructionSet RV32D extends RV32F {
             assembly:"{name(rm)}, {name(rd)}, f {rs1}, f {rs2}";
             behavior: {
                 // F[rd]f = F[rs1]f * F[rs2]f;
-                unsigned<64> res = fmul_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], rm<7? rm: (unsigned char)FCSR);
+                unsigned<64> res = fmul_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], get_rm(rm));
                 if (FLEN == 64)
                     F[rd] = res;
                 else { // NaN boxing
@@ -163,7 +163,7 @@ InstructionSet RV32D extends RV32F {
             assembly:"{name(rm)}, {name(rd)}, f {rs1}, f {rs2}";
             behavior: {
                 // F[rd]f = F[rs1]f / F[rs2]f;
-                unsigned<64> res = fdiv_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], rm<7? rm: (unsigned char)FCSR);
+                unsigned<64> res = fdiv_d((unsigned<64>)F[rs1], (unsigned<64>)F[rs2], get_rm(rm));
                 if (FLEN == 64)
                     F[rd] = res;
                 else { // NaN boxing
@@ -179,7 +179,7 @@ InstructionSet RV32D extends RV32F {
             assembly:"{name(rm)}, {name(rd)}, f {rs1}";
             behavior: {
                 //F[rd]f = sqrt(F[rs1]f);
-                unsigned<64> res = fsqrt_d((unsigned<64>)F[rs1], rm<7? rm: (unsigned char)FCSR);
+                unsigned<64> res = fsqrt_d((unsigned<64>)F[rs1], get_rm(rm));
                 if (FLEN == 64)
                     F[rd] = res;
                 else { // NaN boxing

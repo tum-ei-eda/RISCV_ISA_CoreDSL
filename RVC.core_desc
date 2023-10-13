@@ -11,7 +11,7 @@ InstructionSet RV32IC extends RV32I {
             assembly: "{name(rd)}, {imm:#05x}";
             behavior:
                 if (imm) X[rd + 8] = X[2] + imm;
-                else raise(0, 2);
+                else raise(0, RV_CAUSE_ILLEGAL_INSTRUCTION);
         }
 
         CLW { // (RV32)
@@ -41,7 +41,7 @@ InstructionSet RV32IC extends RV32I {
         CNOP {
             encoding: 3'b000 :: nzimm[5:5] :: 5'b00000 :: nzimm[4:0] :: 2'b01;
             behavior: {
-                //if (!nzimm) raise(0, 2);
+                //if (!nzimm) raise(0, RV_CAUSE_ILLEGAL_INSTRUCTION);
             }
         }
 
@@ -68,7 +68,7 @@ InstructionSet RV32IC extends RV32I {
             encoding: 3'b011 :: imm[17:17] :: rd[4:0] :: imm[16:12] :: 2'b01;
             assembly: "{name(rd)}, {imm:#05x}";
             behavior: {
-                if (imm == 0) raise(0, 2);
+                if (imm == 0) raise(0, RV_CAUSE_ILLEGAL_INSTRUCTION);
                 if ((rd % RFS) != 0) X[rd % RFS] = (signed<18>)imm;
             }
         }
@@ -78,12 +78,12 @@ InstructionSet RV32IC extends RV32I {
             assembly: "{nzimm:#05x}";
             behavior:
                 if (nzimm) X[2] = X[2] + (signed<10>)nzimm;
-                else raise(0, 2);
+                else raise(0, RV_CAUSE_ILLEGAL_INSTRUCTION);
         }
 
         __reserved_clui {//(RV32)
             encoding: 3'b011 :: 1'b0 :: rd[4:0] :: 5'b00000 :: 2'b01;
-            behavior: raise(0, 2);
+            behavior: raise(0, RV_CAUSE_ILLEGAL_INSTRUCTION);
         }
 
         CSRLI {//(RV32 nse)
@@ -222,7 +222,7 @@ InstructionSet RV32IC extends RV32I {
 
         CEBREAK [[no_cont]] {//(RV32)
             encoding: 3'b100 :: 1'b1 :: 5'b00000 :: 5'b00000 :: 2'b10;
-            behavior: raise(0, 3);
+            behavior: raise(0, RV_CAUSE_BREAKPOINT);
         }
 
         CSWSP {//
@@ -236,7 +236,7 @@ InstructionSet RV32IC extends RV32I {
 
         DII [[no_cont]] { // Defined Illegal Instruction
             encoding: 3'b000 :: 1'b0 :: 5'b00000 :: 5'b00000 :: 2'b00;
-            behavior: raise(0, 2);
+            behavior: raise(0, RV_CAUSE_ILLEGAL_INSTRUCTION);
         }
     }
 }
@@ -363,7 +363,7 @@ InstructionSet RV64IC extends RV32IC {
             encoding: 3'b000:: shamt[5:5] :: rs1[4:0] :: shamt[4:0] :: 2'b10;
             assembly: "{name(rs1)}, {shamt}";
             behavior: {
-                if(rs1 == 0) raise(0, 2);
+                if(rs1 == 0) raise(0, RV_CAUSE_ILLEGAL_INSTRUCTION);
                 X[rs1] = X[rs1] << shamt;
             }
         }
@@ -455,7 +455,7 @@ InstructionSet RV128IC extends RV64IC {
             encoding: 3'b000:: 0b0 :: rs1[4:0] :: 0b0000 :: 2'b10;
             assembly: "{name(rs1)}";
             behavior: {
-                if(rs1 == 0) raise(0, 2);
+                if(rs1 == 0) raise(0, RV_CAUSE_ILLEGAL_INSTRUCTION);
                 X[rs1] = X[rs1] << 64;
             }
         }

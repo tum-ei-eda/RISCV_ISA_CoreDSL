@@ -23,7 +23,7 @@ InstructionSet RV32I extends RISCVBase {
             assembly: "{name(rd)}, {imm:#0x}";
             behavior: {
                 if (imm % INSTR_ALIGNMENT) {
-                    raise(0, 0);
+                    raise(0, RV_CAUSE_MISALIGNED_FETCH);
                 } else {
                     if ((rd % RFS) != 0) X[rd % RFS] = PC + 4;
                     PC = PC + (signed)imm;
@@ -37,7 +37,7 @@ InstructionSet RV32I extends RISCVBase {
             behavior: {
                 unsigned<XLEN> new_pc = (X[rs1 % RFS] + (signed)imm) & ~0x1;
                 if (new_pc % INSTR_ALIGNMENT) {
-                    raise(0, 0);
+                    raise(0, RV_CAUSE_MISALIGNED_FETCH);
                 } else {
                     if ((rd % RFS) != 0) X[rd % RFS] = PC + 4;
                     PC = new_pc & ~0x1;
@@ -51,7 +51,7 @@ InstructionSet RV32I extends RISCVBase {
             behavior: {
                 if (X[rs1 % RFS] == X[rs2 % RFS]) {
                     if(imm % INSTR_ALIGNMENT) {
-                        raise(0, 0);
+                        raise(0, RV_CAUSE_MISALIGNED_FETCH);
                     } else {
                         PC = PC + (signed)imm;
                     }
@@ -65,7 +65,7 @@ InstructionSet RV32I extends RISCVBase {
             behavior: {
                 if (X[rs1 % RFS] != X[rs2 % RFS]) {
                     if (imm % INSTR_ALIGNMENT) {
-                        raise(0, 0);
+                        raise(0, RV_CAUSE_MISALIGNED_FETCH);
                     } else {
                         PC = PC + (signed)imm;
                     }
@@ -79,7 +79,7 @@ InstructionSet RV32I extends RISCVBase {
             behavior: {
                 if ((signed<XLEN>)X[rs1 % RFS] < (signed<XLEN>)X[rs2 % RFS]) {
                     if (imm % INSTR_ALIGNMENT) {
-                        raise(0, 0);
+                        raise(0, RV_CAUSE_MISALIGNED_FETCH);
                     } else {
                         PC = PC + (signed)imm;
                     }
@@ -93,7 +93,7 @@ InstructionSet RV32I extends RISCVBase {
             behavior: {
                 if ((signed<XLEN>)X[rs1 % RFS] >= (signed<XLEN>)X[rs2 % RFS]) {
                     if (imm % INSTR_ALIGNMENT) {
-                        raise(0, 0);
+                        raise(0, RV_CAUSE_MISALIGNED_FETCH);
                     } else {
                         PC = PC + (signed)imm;
                     }
@@ -107,7 +107,7 @@ InstructionSet RV32I extends RISCVBase {
             behavior: {
                 if (X[rs1 % RFS] < X[rs2 % RFS]) {
                     if (imm % INSTR_ALIGNMENT) {
-                        raise(0, 0);
+                        raise(0, RV_CAUSE_MISALIGNED_FETCH);
                     } else {
                         PC = PC + (signed)imm;
                     }
@@ -121,7 +121,7 @@ InstructionSet RV32I extends RISCVBase {
             behavior: {
                 if (X[rs1 % RFS] >= X[rs2 % RFS]) {
                     if (imm % INSTR_ALIGNMENT) {
-                        raise(0, 0);
+                        raise(0, RV_CAUSE_MISALIGNED_FETCH);
                     } else {
                         PC = PC + (signed)imm;
                     }
@@ -333,7 +333,7 @@ InstructionSet RV32I extends RISCVBase {
 
         EBREAK [[no_cont]] {
             encoding: 0b000000000001 :: 5'b00000 :: 3'b000 :: 5'b00000 :: 7'b1110011;
-            behavior: raise(0, 3);
+            behavior: raise(0, RV_CAUSE_BREAKPOINT);
         }
         MRET[[no_cont]] {
             encoding: 7'b0011000 :: 5'b00010 :: 5'b00000 :: 3'b000 :: 5'b00000 :: 7'b1110011;
@@ -464,7 +464,7 @@ InstructionSet RVDebug extends RISCVBase {
             encoding: 7'b0111101 :: 5'b10010 :: 5'b00000 :: 3'b000 :: 5'b00000 :: 7'b1110011;
             behavior: {
                 if(PRIV<4)
-                    raise(0, 2);
+                    raise(0, RV_CAUSE_ILLEGAL_INSTRUCTION);
                 else {
                     PC=DPC;
                     PRIV &= 0x3;

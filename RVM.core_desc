@@ -130,7 +130,7 @@ InstructionSet RV64M extends RV32M {
             behavior: {
                 if ((rd % RFS) != 0) {
                     if (X[rs2 % RFS] != 0) {
-                        signed<32> MMIN = 1<<31;
+                        signed<32> MMIN = -(1<<31);
                         if ((signed<32>)X[rs1 % RFS] == MMIN && (signed<32>)X[rs2 % RFS] == -1)
                             X[rd % RFS] = -1<<31;
                         else
@@ -160,7 +160,7 @@ InstructionSet RV64M extends RV32M {
             behavior: {
                 if ((rd % RFS) != 0) {
                     if (X[rs2 % RFS] != 0) {
-                        signed<32> MMIN = 1<<31;
+                        signed<32> MMIN = -(1<<31);
                         if ((signed<32>)X[rs1 % RFS] == MMIN && (signed<32>)X[rs2 % RFS] == -1)
                             X[rd % RFS] = 0;
                         else

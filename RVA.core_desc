@@ -213,7 +213,7 @@ InstructionSet RV64A extends RV32A {
                 unsigned<XLEN> offs = X[rs1 % RFS];
                 signed<64> res = MEM[offs];
                 if ((rd % RFS) != 0) X[rd % RFS] = res;
-                unsigned<64> res2 = res :: X[rs2 % RFS];
+                unsigned<64> res2 = res | X[rs2 % RFS];
                 MEM[offs] = res2;
             }
         }

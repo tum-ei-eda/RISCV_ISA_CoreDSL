@@ -27,7 +27,7 @@ InstructionSet RV32D extends RV32F {
             encoding: imm[11:0] :: rs1[4:0] :: 3'b011 :: rd[4:0] :: 7'b0000111;
             assembly:"f {rd}, {imm}({name(rs1)})";
             behavior: {
-                unsigned<XLEN> offs = X[rs1 % RFS] + (signed<12>)imm;
+                unsigned<XLEN> offs = (unsigned<XLEN>)(X[rs1 % RFS] + (signed<12>)imm);
                 unsigned<64> res = (unsigned<64>)MEM[offs+7:offs];
                 if (FLEN == 64)
                     F[rd] = res;
@@ -41,7 +41,7 @@ InstructionSet RV32D extends RV32F {
             encoding: imm[11:5] :: rs2[4:0] :: rs1[4:0] :: 3'b011 :: imm[4:0] :: 7'b0100111;
             assembly:"f {rs2}, {imm}({name(rs1)})";
             behavior: {
-                unsigned<XLEN> offs = X[rs1 % RFS] + (signed<12>)imm;
+                unsigned<XLEN> offs = (unsigned<XLEN>)(X[rs1 % RFS] + (signed<12>)imm);
                 MEM[offs+7:offs] = (unsigned<64>)F[rs2];
             }
         }
@@ -296,7 +296,7 @@ InstructionSet RV32D extends RV32F {
                     unsigned<64> frs2 = unbox_d(F[rs2]);
                     res = fcmp_d(frs1, frs2, 0);
                 }
-                if ((rd % RFS) != 0) X[rd % RFS] = res;
+                if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<XLEN>)(res);
                 unsigned<32> flags = fget_flags();
                 FCSR = (FCSR & ~FFLAG_MASK) | (flags & FFLAG_MASK);
             }
@@ -314,7 +314,7 @@ InstructionSet RV32D extends RV32F {
                     unsigned<64> frs2 = unbox_d(F[rs2]);
                     res = fcmp_d(frs1, frs2, 2);
                 }
-                if ((rd % RFS) != 0) X[rd % RFS] = res;
+                if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<XLEN>)(res);
                 unsigned<32> flags = fget_flags();
                 FCSR = (FCSR & ~FFLAG_MASK) | (flags & FFLAG_MASK);
             }
@@ -332,7 +332,7 @@ InstructionSet RV32D extends RV32F {
                     unsigned<64> frs2 = unbox_d(F[rs2]);
                     res = fcmp_d(frs1, frs2, 1);
                 }
-                if ((rd % RFS) != 0) X[rd % RFS] = res;
+                if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<XLEN>)(res);
                 unsigned<32> flags = fget_flags();
                 FCSR = (FCSR & ~FFLAG_MASK) | (flags & FFLAG_MASK);
             }
@@ -342,7 +342,7 @@ InstructionSet RV32D extends RV32F {
             encoding: 7'b1110001 :: 5'b00000 :: rs1[4:0] :: 3'b001 :: rd[4:0] :: 7'b1010011;
             assembly:"{name(rd)}, f {rs1}";
             behavior: {
-                X[rd % RFS] = fclass_d((unsigned<64>)F[rs1]);
+                X[rd % RFS] = (unsigned<XLEN>)(fclass_d((unsigned<64>)F[rs1]));
             }
         }
 
@@ -375,7 +375,7 @@ InstructionSet RV32D extends RV32F {
                     unsigned<64> frs1 = unbox_d(F[rs1]);
                     res = fcvt_64_32(frs1, 1, rm);
                 }
-                if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<64>)(signed)res;
+                if ((rd % RFS) != 0) X[rd % RFS] = (unsigned<XLEN>)((unsigned<64>)(signed)res);
                 unsigned<32> flags = fget_flags();
                 FCSR = (FCSR & ~FFLAG_MASK) | (flags & FFLAG_MASK);
             }

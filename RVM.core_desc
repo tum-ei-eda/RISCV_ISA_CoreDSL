@@ -11,7 +11,7 @@ InstructionSet RV32M extends RISCVBase {
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
             behavior: {
                 if ((rd % RFS) != 0) {
-                    signed<MUL_LEN> res = (signed<MUL_LEN>)(signed)X[rs1 % RFS] * (signed<MUL_LEN>)(signed)X[rs2 % RFS];
+                    signed<MUL_LEN> res = (signed<MUL_LEN>)((signed<MUL_LEN>)(signed)X[rs1 % RFS] * (signed<MUL_LEN>)(signed)X[rs2 % RFS]);
                     X[rd % RFS] = (unsigned<XLEN>)res;
                 }
             }
@@ -22,7 +22,7 @@ InstructionSet RV32M extends RISCVBase {
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
             behavior: {
                 if ((rd % RFS) != 0) {
-                    signed<MUL_LEN> res = (signed<MUL_LEN>)(signed)X[rs1 % RFS] * (signed<MUL_LEN>)(signed)X[rs2 % RFS];
+                    signed<MUL_LEN> res = (signed<MUL_LEN>)((signed<MUL_LEN>)(signed)X[rs1 % RFS] * (signed<MUL_LEN>)(signed)X[rs2 % RFS]);
                     X[rd % RFS] = (unsigned<XLEN>)(res >> XLEN);
                 }
             }
@@ -33,7 +33,7 @@ InstructionSet RV32M extends RISCVBase {
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
             behavior: {
                 if ((rd % RFS) != 0) {
-                    signed<MUL_LEN> res = (signed<MUL_LEN>)(signed)X[rs1 % RFS] * (unsigned<MUL_LEN>)X[rs2 % RFS];
+                    signed<MUL_LEN> res = (signed<MUL_LEN>)((signed<MUL_LEN>)(signed)X[rs1 % RFS] * (unsigned<MUL_LEN>)X[rs2 % RFS]);
                         X[rd % RFS] = (unsigned<XLEN>)(res >> XLEN);
                 }
             }
@@ -44,7 +44,7 @@ InstructionSet RV32M extends RISCVBase {
             assembly:"{name(rd)}, {name(rs1)}, {name(rs2)}";
             behavior: {
                 if ((rd % RFS) != 0) {
-                    unsigned<MUL_LEN> res = (unsigned<MUL_LEN>)X[rs1 % RFS] * (unsigned<MUL_LEN>)X[rs2 % RFS];
+                    unsigned<MUL_LEN> res = (unsigned<MUL_LEN>)((unsigned<MUL_LEN>)X[rs1 % RFS] * (unsigned<MUL_LEN>)X[rs2 % RFS]);
                     X[rd % RFS] = (unsigned<XLEN>)(res >> XLEN);
                 }
             }
@@ -73,9 +73,9 @@ InstructionSet RV32M extends RISCVBase {
             behavior: {
                 if ((rd % RFS) != 0) {
                     if (X[rs2 % RFS] != 0)
-                        X[rd % RFS] = X[rs1 % RFS] / X[rs2 % RFS];
+                        X[rd % RFS] = (unsigned<XLEN>)(X[rs1 % RFS] / X[rs2 % RFS]);
                     else
-                        X[rd % RFS] = -1;
+                        X[rd % RFS] = (unsigned<XLEN>)(-1);
                 }
             }
         }
@@ -90,7 +90,7 @@ InstructionSet RV32M extends RISCVBase {
                         if (X[rs1 % RFS] == MMIN && (signed<XLEN>)X[rs2 % RFS] == -1)
                             X[rd % RFS] = 0;
                         else
-                            X[rd % RFS] = (signed<XLEN>)X[rs1 % RFS] % (signed<XLEN>)X[rs2 % RFS];
+                            X[rd % RFS] = (unsigned<XLEN>)((signed<XLEN>)X[rs1 % RFS] % (signed<XLEN>)X[rs2 % RFS]);
                     } else
                         X[rd % RFS] = X[rs1 % RFS];
                 }

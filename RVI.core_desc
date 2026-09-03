@@ -193,7 +193,7 @@ InstructionSet RV32I extends RISCVBase {
             assembly:"{name(rs2)}, {imm}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> store_address = (unsigned<XLEN>)(X[rs1 % RFS] + (signed)imm);
-                MEM[store_address+1:store_address] = (signed<16>)X[rs2 % RFS];
+                MEM[store_address+1:store_address] = (unsigned)(signed<16>)X[rs2 % RFS];
             }
         }
 
@@ -202,7 +202,7 @@ InstructionSet RV32I extends RISCVBase {
             assembly:"{name(rs2)}, {imm}({name(rs1)})";
             behavior: {
                 unsigned<XLEN> store_address = (unsigned<XLEN>)(X[rs1 % RFS] + (signed)imm);
-                MEM[store_address+3:store_address] = (signed<32>)X[rs2 % RFS];
+                MEM[store_address+3:store_address] = (unsigned)(signed<32>)X[rs2 % RFS];
             }
         }
 
@@ -257,7 +257,7 @@ InstructionSet RV32I extends RISCVBase {
         SRAI [[enable=XLEN==32]] {
             encoding: 7'b0100000 :: shamt[4:0] :: rs1[4:0] :: 3'b101 :: rd[4:0] :: 7'b0010011;
             assembly:"{name(rd)}, {name(rs1)}, {shamt}";
-            behavior: if ((rd % RFS) != 0) X[rd % RFS] = (signed<XLEN>)X[rs1 % RFS] >> shamt;
+            behavior: if ((rd % RFS) != 0) X[rd % RFS] = (unsigned)(signed<XLEN>)X[rs1 % RFS] >> shamt;
         }
 
         ADD {
@@ -323,7 +323,7 @@ InstructionSet RV32I extends RISCVBase {
         FENCE {
             encoding: fm[3:0] :: pred[3:0] :: succ[3:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b0001111;
             assembly:"{pred}, {succ} ({fm} , {name(rs1)}, {name(rd)})";
-            behavior: FENCE[fence] = pred << 4 | succ;
+            behavior: FENCE[fence] = (unsigned<XLEN>)pred << 4 | succ;
         }
 
         ECALL [[no_cont]] {

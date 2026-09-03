@@ -433,13 +433,13 @@ InstructionSet RISCVEncoding {
         const unsigned int RV_MSTATUS_TW = 0x00200000;
         const unsigned int RV_MSTATUS_TSR = 0x00400000;
         const unsigned int RV_MSTATUS32_SD = 0x80000000;
-        const unsigned int RV_MSTATUS_UXL = 0x0000000300000000;
-        const unsigned int RV_MSTATUS_SXL = 0x0000000C00000000;
-        const unsigned int RV_MSTATUS_SBE = 0x0000001000000000;
-        const unsigned int RV_MSTATUS_MBE = 0x0000002000000000;
-        const unsigned int RV_MSTATUS_GVA = 0x0000004000000000;
-        const unsigned int RV_MSTATUS_MPV = 0x0000008000000000;
-        const unsigned int RV_MSTATUS64_SD = 0x8000000000000000;
+        const unsigned long RV_MSTATUS_UXL = 0x0000000300000000;
+        const unsigned long RV_MSTATUS_SXL = 0x0000000C00000000;
+        const unsigned long RV_MSTATUS_SBE = 0x0000001000000000;
+        const unsigned long RV_MSTATUS_MBE = 0x0000002000000000;
+        const unsigned long RV_MSTATUS_GVA = 0x0000004000000000;
+        const unsigned long RV_MSTATUS_MPV = 0x0000008000000000;
+        const unsigned long RV_MSTATUS64_SD = 0x8000000000000000;
 
         const unsigned int RV_PRV_U = 0;
         const unsigned int RV_PRV_S = 1;
@@ -462,19 +462,19 @@ InstructionSet RISCVEncoding {
         const unsigned int RV_IRQ_COP = 12;
         const unsigned int RV_IRQ_LCOF = 13;
 
-        const unsigned int RV_MIP_USIP = (1 << RV_IRQ_U_SOFT);
-        const unsigned int RV_MIP_SSIP = (1 << RV_IRQ_S_SOFT);
-        const unsigned int RV_MIP_VSSIP = (1 << RV_IRQ_VS_SOFT);
-        const unsigned int RV_MIP_MSIP = (1 << RV_IRQ_M_SOFT);
-        const unsigned int RV_MIP_UTIP = (1 << RV_IRQ_U_TIMER);
-        const unsigned int RV_MIP_STIP = (1 << RV_IRQ_S_TIMER);
-        const unsigned int RV_MIP_VSTIP = (1 << RV_IRQ_VS_TIMER);
-        const unsigned int RV_MIP_MTIP = (1 << RV_IRQ_M_TIMER);
-        const unsigned int RV_MIP_UEIP = (1 << RV_IRQ_U_EXT);
-        const unsigned int RV_MIP_SEIP = (1 << RV_IRQ_S_EXT);
-        const unsigned int RV_MIP_VSEIP = (1 << RV_IRQ_VS_EXT);
-        const unsigned int RV_MIP_MEIP = (1 << RV_IRQ_M_EXT);
-        const unsigned int RV_MIP_SGEIP = (1 << RV_IRQ_S_GEXT);
-        const unsigned int RV_MIP_LCOFIP = (1 << RV_IRQ_LCOF);
+        const unsigned int RV_MIP_USIP = (32'b1 << RV_IRQ_U_SOFT);
+        const unsigned int RV_MIP_SSIP = (32'b1 << RV_IRQ_S_SOFT);
+        const unsigned int RV_MIP_VSSIP = (32'b1 << RV_IRQ_VS_SOFT);
+        const unsigned int RV_MIP_MSIP = (32'b1 << RV_IRQ_M_SOFT);
+        const unsigned int RV_MIP_UTIP = (32'b1 << RV_IRQ_U_TIMER);
+        const unsigned int RV_MIP_STIP = (32'b1 << RV_IRQ_S_TIMER);
+        const unsigned int RV_MIP_VSTIP = (32'b1 << RV_IRQ_VS_TIMER);
+        const unsigned int RV_MIP_MTIP = (32'b1 << RV_IRQ_M_TIMER);
+        const unsigned int RV_MIP_UEIP = (32'b1 << RV_IRQ_U_EXT);
+        const unsigned int RV_MIP_SEIP = (32'b1 << RV_IRQ_S_EXT);
+        const unsigned int RV_MIP_VSEIP = (32'b1 << RV_IRQ_VS_EXT);
+        const unsigned int RV_MIP_MEIP = (32'b1 << RV_IRQ_M_EXT);
+        const unsigned int RV_MIP_SGEIP = (32'b1 << RV_IRQ_S_GEXT);
+        const unsigned int RV_MIP_LCOFIP = (32'b1 << RV_IRQ_LCOF);
     }
 }

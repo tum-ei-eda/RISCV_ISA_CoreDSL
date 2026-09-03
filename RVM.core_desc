@@ -56,7 +56,7 @@ InstructionSet RV32M extends RISCVBase {
             behavior: {
                 if ((rd % RFS) != 0) {
                     if (X[rs2 % RFS] != 0) {
-                        unsigned<XLEN> MMIN = 1<<(XLEN-1);
+                        unsigned<XLEN> MMIN = ((unsigned<XLEN>)1)<<(XLEN-1);
                         if (X[rs1 % RFS] == MMIN && (signed<XLEN>)X[rs2 % RFS] == -1)
                             X[rd % RFS] = MMIN;
                         else
@@ -86,7 +86,7 @@ InstructionSet RV32M extends RISCVBase {
             behavior: {
                 if ((rd % RFS) != 0) {
                     if (X[rs2 % RFS] != 0) {
-                        unsigned<XLEN> MMIN = 1<<(XLEN-1);
+                        unsigned<XLEN> MMIN = (unsigned<XLEN>)1<<(XLEN-1);
                         if (X[rs1 % RFS] == MMIN && (signed<XLEN>)X[rs2 % RFS] == -1)
                             X[rd % RFS] = 0;
                         else
@@ -130,13 +130,13 @@ InstructionSet RV64M extends RV32M {
             behavior: {
                 if ((rd % RFS) != 0) {
                     if (X[rs2 % RFS] != 0) {
-                        signed<32> MMIN = -(1<<31);
+                        signed<32> MMIN = (signed<32>)1<<31;
                         if ((signed<32>)X[rs1 % RFS] == MMIN && (signed<32>)X[rs2 % RFS] == -1)
-                            X[rd % RFS] = -1<<31;
+                            if(rd!=0) X[rd] = (unsigned<XLEN>)-1<<31;
                         else
                             X[rd % RFS] = (signed<XLEN>)((signed<32>)X[rs1 % RFS] / (signed<32>)X[rs2 % RFS]);
                     }else
-                        X[rd % RFS] = -1;
+                        if(rd!=0) X[rd] = (unsigned<XLEN>)-1;
                 }
             }
         }
@@ -160,7 +160,7 @@ InstructionSet RV64M extends RV32M {
             behavior: {
                 if ((rd % RFS) != 0) {
                     if (X[rs2 % RFS] != 0) {
-                        signed<32> MMIN = -(1<<31);
+                        signed<32> MMIN = (signed<32>)(-(32'b1<<31));
                         if ((signed<32>)X[rs1 % RFS] == MMIN && (signed<32>)X[rs2 % RFS] == -1)
                             X[rd % RFS] = 0;
                         else

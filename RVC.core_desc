@@ -255,7 +255,7 @@ InstructionSet RV32FC extends RV32F {
                 if (FLEN == 32)
                     F[rd + 8] = res;
                 else { // NaN boxing
-                    F[rd + 8] = ((unsigned<FLEN>)-1 << 32) | res;
+                    F[rd + 8] = (~(unsigned<FLEN>)32'hffffffff) | res;
                 }
             }
         }
@@ -278,7 +278,7 @@ InstructionSet RV32FC extends RV32F {
                 if (FLEN == 32)
                     F[rd] = res;
                 else { // NaN boxing
-                    F[rd] = ((unsigned<FLEN>)-1 << 32) | res;
+                    F[rd] = (~(unsigned<FLEN>)32'hffffffff) | res;
                 }
             }
         }
@@ -305,7 +305,7 @@ InstructionSet RV32DC extends RV32D {
                 if (FLEN == 64)
                     F[rd + 8] = res;
                 else { // NaN boxing
-                    F[rd + 8] = (unsigned<FLEN>)(((unsigned<FLEN>)-1 << 64) | res);
+                    F[rd + 8] = (unsigned<FLEN>)((~(unsigned<FLEN>)64'hffffffffffffffff) | res);
                 }
             }
         }
@@ -328,7 +328,7 @@ InstructionSet RV32DC extends RV32D {
                 if (FLEN == 64)
                     F[rd] = res;
                 else { // NaN boxing
-                    F[rd] = (unsigned<FLEN>)(((unsigned<FLEN>)-1 << 64) | res);
+                    F[rd] = (unsigned<FLEN>)((~(unsigned<FLEN>)64'hffffffffffffffff) | res);
                 }
             }
         }
@@ -439,6 +439,9 @@ InstructionSet RV64IC extends RV32IC {
 }
 
 InstructionSet RV128IC extends RV64IC {
+    architectural_state {
+        XLEN = 128;
+    }
     instructions{
         CSRAI64 {//(RV128)
             encoding: 3'b100 :: 1'b0 :: 2'b01:: rs1[2:0] :: 4'b0000 :: 2'b01;

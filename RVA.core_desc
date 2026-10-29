@@ -21,7 +21,7 @@ InstructionSet RV32A extends RISCVBase {
                 if (res1 != 0)
                     MEM[offs+3:offs] = (unsigned<32>)X[rs2 % RFS];
                 if ((rd % RFS) != 0)
-                    X[rd % RFS] = res1 ? 0 : 1;
+                    X[rd % RFS] = (unsigned<XLEN>)(res1 ? 0 : 1);
             }
         }
 
@@ -156,7 +156,7 @@ InstructionSet RV64A extends RV32A {
                 if (res != 0)
                     MEM[offs+7:offs] = X[rs2 % RFS];
                 if ((rd % RFS) != 0)
-                    X[rd % RFS] = res ? 0 : 1;
+                    X[rd % RFS] = (unsigned<XLEN>)(res ? 0 : 1);
             }
         }
 

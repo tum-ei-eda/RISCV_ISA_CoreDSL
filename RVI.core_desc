@@ -323,7 +323,7 @@ InstructionSet RV32I extends RISCVBase {
         FENCE {
             encoding: fm[3:0] :: pred[3:0] :: succ[3:0] :: rs1[4:0] :: 3'b000 :: rd[4:0] :: 7'b0001111;
             assembly:"{pred}, {succ} ({fm} , {name(rs1)}, {name(rd)})";
-            behavior: FENCE[fence] = pred << 4 | succ;
+            behavior: FENCE[fence] = (unsigned<XLEN>)pred << 4 | succ;
         }
 
         ECALL [[no_cont]] {

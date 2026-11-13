@@ -3348,34 +3348,34 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<32> vlen = CSR[VLENB_ADDR]*8;
 
                 if (sew == 0b011 && XLEN == 32) {
-                    vtype_result = (1 << (XLEN - 1));
+                    vtype_result = ((unsigned<XLEN>)1 << (XLEN - 1));
                 }
 
                 if (lmul & 4) {
                     // _illmask = (1 << (XLEN-1));
                     if(lmul == 6) {
-                        _vlmax = vlen / (0x8 << sew) / 4;
+                        _vlmax = vlen / ((unsigned<32>)0x8 << sew) / 4;
                     } else if(lmul == 7) {
-                        _vlmax = vlen / (0x8 << sew) / 2;
+                        _vlmax = vlen / ((unsigned<32>)0x8 << sew) / 2;
                     } else {
                         // For XLEN=32: unsupported!
                         if (XLEN == 32) {
-                            vtype_result = (1 << (XLEN - 1));
+                            vtype_result = ((unsigned<XLEN>)1 << (XLEN - 1));
                         } else {
-                            _vlmax = vlen / (0x8 << sew) / 8;
+                            _vlmax = vlen / ((unsigned<32>)0x8 << sew) / 8;
                         }
-                        // _vlmax = vlen / (0x8 << sew) / 8;
+                        // _vlmax = vlen / ((unsigned<32>)0x8 << sew) / 8;
                     }
                 } else {
                     // _illmask = (0 << (XLEN-1));
                     if(lmul == 0) {
-                        _vlmax = vlen / (0x8 << sew);
+                        _vlmax = vlen / ((unsigned<32>)0x8 << sew);
                     } else if(lmul == 1) {
-                        _vlmax = vlen / (0x8 << sew) *2;
+                        _vlmax = vlen / ((unsigned<32>)0x8 << sew) *2;
                     } else if(lmul == 2) {
-                        _vlmax = vlen / (0x8 << sew) *4;
+                        _vlmax = vlen / ((unsigned<32>)0x8 << sew) *4;
                     } else if(lmul == 3) {
-                        _vlmax = vlen / (0x8 << sew) *8;
+                        _vlmax = vlen / ((unsigned<32>)0x8 << sew) *8;
                     }
                 }
 
@@ -3383,7 +3383,7 @@ InstructionSet RVZve32x extends RVVBase {
                 if (rs1 != 0){
                     _avl = X[rs1];
                 }else if(rd != 0){
-                    _avl = ~0;
+                    _avl = (unsigned<32>)-1;
                 }else{
                     _avl = CSR[VL_ADDR];
                 }
@@ -3427,31 +3427,31 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<32> vlen = CSR[VLENB_ADDR] * 8;
 
                 if (sew == 0b011 && XLEN == 32) {
-                    vtype_result = (1 << (XLEN - 1));
+                    vtype_result = ((unsigned<XLEN>)1 << (XLEN - 1));
                 }
 
                 if (lmul & 4) {
                     if(lmul == 6) {
-                        _vlmax = vlen / (0x8 << sew) / 4;
+                        _vlmax = vlen / ((unsigned<32>)0x8 << sew) / 4;
                     } else if(lmul == 7) {
-                        _vlmax = vlen / (0x8 << sew) / 2;
+                        _vlmax = vlen / ((unsigned<32>)0x8 << sew) / 2;
                     } else {
                         // For XLEN=32: unsupported!
                         if (XLEN == 32) {
-                            vtype_result = (1 << (XLEN - 1));
+                            vtype_result = ((unsigned<XLEN>)1 << (XLEN - 1));
                         } else {
-                            _vlmax = vlen / (0x8 << sew) / 8;
+                            _vlmax = vlen / ((unsigned<32>)0x8 << sew) / 8;
                         }
                     }
                 } else {
                     if(lmul == 0){
-                        _vlmax = vlen / (0x8 << sew);
+                        _vlmax = vlen / ((unsigned<32>)0x8 << sew);
                     } else if(lmul == 1) {
-                        _vlmax = vlen / (0x8 << sew) * 2;
+                        _vlmax = vlen / ((unsigned<32>)0x8 << sew) * 2;
                     } else if(lmul == 2) {
-                        _vlmax = vlen / (0x8 << sew) * 4;
+                        _vlmax = vlen / ((unsigned<32>)0x8 << sew) * 4;
                     } else if(lmul == 3) {
-                        _vlmax = vlen / (0x8 << sew) * 8;
+                        _vlmax = vlen / ((unsigned<32>)0x8 << sew) * 8;
                     }
                 }
 
@@ -3497,41 +3497,41 @@ InstructionSet RVZve32x extends RVVBase {
                 unsigned<XLEN> _vlen = CSR[VLENB_ADDR]*8;
 
                 if (sew == 0b011 && XLEN == 32) {
-                    vtype_result = (1 << (XLEN - 1));
+                    vtype_result = ((unsigned<XLEN>)1 << (XLEN - 1));
                 }
 
                 if (lmul & 4){
                     // _illmask = (1 << (XLEN-1));
                     if(lmul == 6){
-                        _vlmax = _vlen / (0x8 << sew) / 4;
+                        _vlmax = _vlen / ((unsigned<32>)0x8 << sew) / 4;
                     }else if(lmul == 7){
-                        _vlmax = _vlen / (0x8 << sew) / 2;
+                        _vlmax = _vlen / ((unsigned<32>)0x8 << sew) / 2;
                     }else{
                         // For XLEN=32: unsupported!
                         if (XLEN == 32) {
-                            vtype_result = (1 << (XLEN - 1));
+                            vtype_result = ((unsigned<XLEN>)1 << (XLEN - 1));
                         } else {
-                            _vlmax = _vlen / (0x8 << sew) / 8;
+                            _vlmax = _vlen / ((unsigned<32>)0x8 << sew) / 8;
                         }
-                        // _vlmax = _vlen / (0x8 << sew) / 8;
+                        // _vlmax = _vlen / ((unsigned<32>)0x8 << sew) / 8;
                     }
                 }else {
                     // _illmask = (0 << (XLEN-1));
                     if(lmul == 0){
-                        _vlmax = _vlen / (0x8 << sew);
+                        _vlmax = _vlen / ((unsigned<32>)0x8 << sew);
                     }else if(lmul == 1){
-                        _vlmax = _vlen / (0x8 << sew) *2;
+                        _vlmax = _vlen / ((unsigned<32>)0x8 << sew) *2;
                     }else if(lmul == 2){
-                        _vlmax = _vlen / (0x8 << sew) *4;
+                        _vlmax = _vlen / ((unsigned<32>)0x8 << sew) *4;
                     }else if(lmul == 3){
-                        _vlmax = _vlen / (0x8 << sew) *8;
+                        _vlmax = _vlen / ((unsigned<32>)0x8 << sew) *8;
                     }
                 }
                 unsigned<32> _avl = 0;
                 if (rs1 != 0){
                     _avl = X[rs1];
                 }else if(rd != 0){
-                    _avl = ~0;
+                    _avl = (unsigned<32>)-1;
                 }else{
                     _avl = CSR[VL_ADDR];
                 }

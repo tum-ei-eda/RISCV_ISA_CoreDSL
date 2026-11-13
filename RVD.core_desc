@@ -220,7 +220,7 @@ InstructionSet RV32D extends RV32F {
             encoding: 7'b0010001 :: rs2[4:0] :: rs1[4:0] :: 3'b010 :: rd[4:0] :: 7'b1010011;
             assembly:"f {rd}, f {rs1}, f {rs2}";
             behavior: {
-                unsigned<64> res = (unsigned<64>)F[rs1] ^ ((unsigned<64>)F[rs2] & (1 << 63));
+                unsigned<64> res = (unsigned<64>)F[rs1] ^ ((unsigned<64>)F[rs2] & ((unsigned<64>)1 << 63));
                 if (FLEN == 64)
                     F[rd] = (unsigned<64>)res;
                 else { // NaN boxing
@@ -267,7 +267,7 @@ InstructionSet RV32D extends RV32F {
             behavior: {
                 unsigned<32> res = fconv_d2f(F[rs1], rm);
                 // NaN boxing
-                F[rd] = (unsigned<FLEN>)((unsigned<FLEN>)(-1 << 32) + res);
+                F[rd] = (unsigned<FLEN>)(((unsigned<FLEN>)-1 << 32) + res);
             }
         }
 
